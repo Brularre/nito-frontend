@@ -1,0 +1,36 @@
+/* Normalizar CSS */
+
+@import url(./vendor/normalize.css);
+
+/* Ajustes Globales */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-light);
+  font-family: 'Lato', Arial, sans-serif;
+
+  --bg-light: #e8e8e8;
+  --bg-dark: #0d1f2d;
+  --primary-accent: #f1cc59;
+  --primary-light: #3f9eca;
+  --primary-dark: #034078;
+  --text-black: #212427;
+  --text-white: #e8e8e8;
+  --text-gray: #333333;
+  --test: magenta;
+  --inactive: #e4e4e4;
+  --select-border: #777;
+  --select-arrow: var(--select-border);
+}
+
+#root {
+  width: 95%;
+  margin: auto;
+}
+
+* {
+  box-sizing: border-box;
+}

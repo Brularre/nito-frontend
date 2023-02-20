@@ -1,0 +1,47 @@
+/* Set the height of the map container */
+.map-container {
+  z-index: -1;
+}
+
+.leaflet-popup-content {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.leaflet-popup-close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 50%;
+  padding: 3px 6px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1;
+  margin: 4px;
+}
+
+.leaflet-top {
+  z-index: 400;
+  top: 25px;
+}
+
+.leaflet-bottom {
+  display: none;
+}
+
+.leaflet-container {
+  filter: saturate(0);
+  height: 90vh;
+  border-radius: 50px 0;
+  top: -35px;
+}
+
+@media screen and (min-width: 768px) {
+  .leaflet-container {
+    top: -15px;
+  }
+}
