@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './Searchbar.css';
 
-function SearchBar(props) {
+export default function SearchBar(props) {
   const [select1Value, setSelect1Value] = useState('');
   const [select2Value, setSelect2Value] = useState('');
 
@@ -55,5 +55,3 @@ function SearchBar(props) {
     </>
   );
 }
-
-export default SearchBar;

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import './navbar__mobile-button.css';
 
-function NavBar() {
+export default function NavBar() {
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -45,5 +45,3 @@ function NavBar() {
     </>
   );
 }
-
-export default NavBar;

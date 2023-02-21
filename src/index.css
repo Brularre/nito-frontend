@@ -2,6 +2,10 @@
 
 @import url(./vendor/normalize.css);
 
+/* Fuentes */
+
+@import url(./fonts/lato.css);
+
 /* Ajustes Globales */
 
 html {

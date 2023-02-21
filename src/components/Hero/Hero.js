@@ -2,7 +2,7 @@ import React from 'react';
 import './Hero.css';
 import SearchBar from '../Searchbar/Searchbar';
 
-function Hero(props) {
+export default function Hero() {
   return (
     <div className="hero">
       <div className="hero__content">
@@ -20,5 +20,3 @@ function Hero(props) {
     </div>
   );
 }
-
-export default Hero;

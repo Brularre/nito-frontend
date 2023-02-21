@@ -8,15 +8,15 @@ import api from '../../utils/api';
 
 // Components
 import Header from '../Header/Header';
-import Hero from '../Hero/Hero';
 import Main from '../Main/Main';
-import Map from '../Map/Map';
+import About from '../About/About';
+import Footer from '../Footer/Footer';
 
 function App() {
   // App States
   const [workers, setWorkers] = useState({});
 
-  function renderWorkers() {
+  function renderCards() {
     api
       .getWorkers()
       .then((workerList) => setWorkers(workerList.data))
@@ -25,9 +25,10 @@ function App() {
       });
   }
 
-  useEffect(() => {
-    renderWorkers();
-  }, []);
+  // useEffect(() => {
+  //   console.log('esto');
+  //   renderCards();
+  // }, []);
 
   return (
     <>
@@ -35,11 +36,11 @@ function App() {
       <WorkerContext.Provider value={{ workers }}>
         <Switch>
           <Route path="/">
-            <Hero />
-            <Map />
-            <Main />
+            <Main workers={workers} renderCards={renderCards} />
+            <About />
           </Route>
         </Switch>
+        <Footer />
       </WorkerContext.Provider>
     </>
   );

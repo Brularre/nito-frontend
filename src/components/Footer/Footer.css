@@ -1,0 +1,35 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-black);
+  padding: 1rem;
+}
+
+.footer__column {
+  width: 50%;
+  padding: 0 1rem;
+}
+
+.footer__logo {
+  width: 250px;
+}
+
+h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin: 0;
+}
