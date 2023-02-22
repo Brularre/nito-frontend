@@ -1,13 +1,13 @@
 .suggested {
   max-width: 1600px;
+  width: 90%;
   margin: auto;
+  padding-top: var(--separator);
 }
 
 .suggested__header {
-  padding-top: 30px;
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(2, 1fr);
+  margin: auto;
+  display: flex;
 }
 
 .suggested__section-name {
@@ -20,7 +20,7 @@
 
 .suggested__title {
   font-weight: 600;
-  font-size: 32px;
+  font-size: var(--size-section-title);
   margin: 0;
 }
 
@@ -30,10 +30,10 @@
   margin-left: auto;
 }
 .suggested__filter-btn {
-  font-size: 16px;
+  font-size: var(--size-text-small);
   font-weight: 400;
   height: 40px;
-  width: 180px;
+  width: 125px;
   text-align: center;
   background-color: var(--primary-dark);
   color: var(--text-white);
@@ -44,7 +44,7 @@
 
 .suggested__filter-btn:hover {
   cursor: pointer;
-  translate: 0 -3%;
+  translate: 0 -20%;
   background-color: var(--primary-accent);
   color: var(--text-black);
 }
@@ -65,7 +65,15 @@
 
 .suggested__position-btn:hover {
   cursor: pointer;
-  translate: 0 -3%;
+  translate: 0 -20%;
   background-color: var(--primary-accent);
   color: var(--text-black);
+}
+
+.suggested__card-container {
+  padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
 }

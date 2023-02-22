@@ -1,15 +1,14 @@
-import { useEffect, useContext } from 'react';
 import '../App/App.css';
 import Hero from '../Hero/Hero';
 import Map from '../Map/Map';
 import Suggested from '../Suggested/Suggested';
 
-export default function Main(props) {
+export default function Main({ workers, renderCards }) {
   return (
     <>
       <Hero />
       <Map />
-      <Suggested workers={props.workers} />
+      <Suggested workers={workers} renderCards={renderCards} />
     </>
   );
 }

@@ -20,7 +20,7 @@
 }
 
 .searchbar__button:hover {
-  translate: 0 -3%;
+  translate: 0 -20%;
   background-color: var(--primary-accent);
   color: var(--text-black);
 }
@@ -30,7 +30,7 @@
   border-radius: 20px 5px 5px 20px;
   padding: 8px 8px;
   width: 40%;
-  font-size: 14px;
+  font-size: var(--size-text-small);
   color: var(--text-gray);
   cursor: pointer;
   outline: none;

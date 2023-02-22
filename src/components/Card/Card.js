@@ -1,7 +1,6 @@
 import './Card.css';
 
 export default function Card({ cardData }) {
-  console.log(cardData);
   return (
     <>
       <div className="card">

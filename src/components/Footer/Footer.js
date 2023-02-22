@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import './Footer.css';
 import logo from '../../images/Logo-Gradient.png';
 
-const Footer = () => {
+export default function Footer() {
   return (
     <>
       <div className="footer">
@@ -13,36 +14,48 @@ const Footer = () => {
             Nito sólo tiene un interés en construir una comunidad de buenos
             datos. Todos los datos inscritos son para uso público
           </p>
-          <ul className="footer__social-links">
-            <li>Facebook</li>
-            <li>Twitter</li>
-            <li>Instagram</li>
-          </ul>
+          <nav className="footer__social-links">
+            <NavLink
+              to="https://www.facebook.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button className="footer__social-icon footer__social-icon_facebook" />
+            </NavLink>
+            <NavLink
+              to="https://www.twitter.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button className="footer__social-icon footer__social-icon_twitter" />
+            </NavLink>
+            <NavLink
+              to="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button className="footer__social-icon footer__social-icon_instagram" />
+            </NavLink>
+          </nav>
         </div>
-      </div>
-      <div className="footer__column">
-        <h3 className="footer__title">Navegación</h3>
-        <nav className="footer__navbar">
-          <NavLink
-            exact
-            className="navbar__item"
-            activeClassName="navbar__item_active"
-            to="/"
-          >
-            Agregar dato
-          </NavLink>
-          <NavLink
-            exact
-            className="navbar__item"
-            activeClassName="navbar__item_active"
-            to="/"
-          >
-            Sobre mi
-          </NavLink>
-        </nav>
+        <div className="footer__column">
+          <h3 className="footer__title">Navegación</h3>
+          <nav className="footer__navbar">
+            <Link exact className="footer__link" to="/#home">
+              Inicio
+            </Link>
+            <Link exact className="footer__link" to="/#suggested">
+              Sugeridos
+            </Link>
+            <Link exact className="footer__link" to="/#form">
+              Agregar dato
+            </Link>
+            <Link exact className="footer__link" to="/#about">
+              Sobre mi
+            </Link>
+          </nav>
+        </div>
       </div>
     </>
   );
-};
-
-export default Footer;
+}

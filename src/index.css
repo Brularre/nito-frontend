@@ -24,10 +24,18 @@ body {
   --text-black: #212427;
   --text-white: #e8e8e8;
   --text-gray: #333333;
+  --text-lighter-gray: #777;
   --test: magenta;
-  --inactive: #e4e4e4;
   --select-border: #777;
   --select-arrow: var(--select-border);
+
+  --size-section-title: 28px;
+  --size-section-subtitle: 16px;
+  --size-title: 22px;
+  --size-text: 18px;
+  --size-text-small: 14px;
+
+  --separator: 50px;
 }
 
 #root {

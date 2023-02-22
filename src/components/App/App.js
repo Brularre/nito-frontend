@@ -1,9 +1,9 @@
 // Imports Dependencies
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 // Imports internos
-import { WorkerContext } from '../../contexts/WorkerContext';
+// import { WorkerContext } from '../../contexts/WorkerContext';
 import api from '../../utils/api';
 
 // Components
@@ -14,34 +14,31 @@ import Footer from '../Footer/Footer';
 
 function App() {
   // App States
-  const [workers, setWorkers] = useState({});
+  const [workers, setWorkers] = useState([]);
 
   function renderCards() {
     api
       .getWorkers()
-      .then((workerList) => setWorkers(workerList.data))
+      .then((workerList) => {
+        console.log(workerList);
+        setWorkers(workerList.data);
+      })
       .catch((err) => {
         console.log(err);
       });
   }
-
-  // useEffect(() => {
-  //   console.log('esto');
-  //   renderCards();
-  // }, []);
-
   return (
     <>
       <Header />
-      <WorkerContext.Provider value={{ workers }}>
-        <Switch>
-          <Route path="/">
-            <Main workers={workers} renderCards={renderCards} />
-            <About />
-          </Route>
-        </Switch>
-        <Footer />
-      </WorkerContext.Provider>
+      {/* <WorkerContext.Provider> */}
+      <Switch>
+        <Route path="/">
+          <Main workers={workers} renderCards={renderCards} />
+          <About />
+        </Route>
+      </Switch>
+      <Footer />
+      {/* </WorkerContext.Provider> */}
     </>
   );
 }

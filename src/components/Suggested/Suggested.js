@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import './Suggested.css';
 import Card from '../Card/Card';
 
-export default function Suggested({ workers }) {
+export default function Suggested({ workers, renderCards }) {
+  useEffect(() => {
+    renderCards();
+  }, []);
+
   return (
-    <div className="suggested">
+    <div id="suggested" className="suggested">
       <div className="suggested__header">
         <div>
           <p className="suggested__section-name">─── Recomendados</p>
@@ -20,10 +25,10 @@ export default function Suggested({ workers }) {
           <button className="suggested__position-btn">&lt;</button>
         </div>
       </div>
-      <div className="card__container">
-        {/* {workers.map((worker) => (
+      <div className="suggested__card-container">
+        {workers.map((worker) => (
           <Card cardData={worker} key={worker._id} />
-        ))} */}
+        ))}
       </div>
     </div>
   );

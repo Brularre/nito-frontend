@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 
 import './Navbar.css';
 import './navbar__mobile-button.css';
@@ -11,22 +11,18 @@ export default function NavBar() {
     <>
       <nav className="navbar">
         <div className={`navbar__item-container ${isActive && 'active'}`}>
-          <NavLink
-            exact
-            className="navbar__item"
-            activeClassName="navbar__item_active"
-            to="/"
-          >
-            Iniciar Sesión
-          </NavLink>
-          <NavLink
-            exact
-            className="navbar__item"
-            activeClassName="navbar__item_active"
-            to="/"
-          >
-            Iniciar Sesión
-          </NavLink>
+          <Link exact className="navbar__item" to="/#home">
+            Inicio
+          </Link>
+          <Link exact className="navbar__item" to="/#suggested">
+            Sugeridos
+          </Link>
+          <Link exact className="navbar__item" to="/#form">
+            Agregar dato
+          </Link>
+          <Link exact className="navbar__item" to="/#about">
+            Sobre mi
+          </Link>
         </div>
       </nav>
       <div

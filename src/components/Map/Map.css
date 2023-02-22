@@ -4,7 +4,7 @@
 }
 
 .leaflet-popup-content {
-  font-size: 14px;
+  font-size: var(--size-text-small);
   line-height: 1.5;
   text-align: center;
 }
@@ -19,7 +19,7 @@
   padding: 3px 6px;
   cursor: pointer;
   text-align: center;
-  font-size: 14px;
+  font-size: var(--size-text-small);
   line-height: 1;
   margin: 4px;
 }

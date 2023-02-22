@@ -11,11 +11,11 @@
 .header__logo {
   width: 125px;
   height: 100%;
-  filter: drop-shadow(0px 2px 1px var(--primary-dark));
-  transition: filter 0.2s, translate 0.2s;
+  filter: drop-shadow(0 2px 4px var(--primary-dark));
+  transition: all 0.6s;
 }
 
 .header__logo:hover {
-  translate: 0 -7%;
-  filter: drop-shadow(0px 2px 0px var(--primary-light));
+  translate: 0 -20%;
+  filter: drop-shadow(0px 2px 0px var(--primary-accent));
 }
