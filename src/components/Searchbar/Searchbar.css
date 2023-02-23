@@ -48,15 +48,6 @@
   color: var(--text-gray);
 }
 
-/* .searchbar__select:checked {
-  background-color: var(--primary-accent);
-}
-
-.searchbar__select option:checked::before {
-  content: '✓';
-  margin-right: 5px;
-} */
-
 .searchbar__info {
   font-size: 12px;
   font-style: italic;

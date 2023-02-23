@@ -1,10 +1,18 @@
 import { useEffect } from 'react';
 import './Suggested.css';
 import Card from '../Card/Card';
+import api from '../../utils/api';
 
-export default function Suggested({ workers, renderCards }) {
+export default function Suggested({ workers, setWorkers }) {
   useEffect(() => {
-    renderCards();
+    api
+      .getWorkers()
+      .then((workerList) => {
+        setWorkers(workerList.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
