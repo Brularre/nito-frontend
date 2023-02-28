@@ -34,7 +34,6 @@
 }
 
 .leaflet-container {
-  filter: saturate(0);
   height: 90vh;
   border-radius: 50px 0;
   top: -35px;

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 
 import './Navbar.css';
-import './navbar__mobile-button.css';
 
 export default function NavBar() {
   const [isActive, setIsActive] = useState(false);
@@ -11,16 +10,16 @@ export default function NavBar() {
     <>
       <nav className="navbar">
         <div className={`navbar__item-container ${isActive && 'active'}`}>
-          <Link exact className="navbar__item" to="/#home">
+          <Link className="navbar__item" to="/#home">
             Inicio
           </Link>
-          <Link exact className="navbar__item" to="/#suggested">
+          <Link className="navbar__item" to="/#suggested">
             Sugeridos
           </Link>
-          <Link exact className="navbar__item" to="/#form">
+          <Link className="navbar__item" to="/#form">
             Agregar dato
           </Link>
-          <Link exact className="navbar__item" to="/#about">
+          <Link className="navbar__item" to="/#about">
             Sobre mi
           </Link>
         </div>

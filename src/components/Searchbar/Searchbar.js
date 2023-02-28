@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Searchbar.css';
 
 export default function SearchBar(props) {
+  console.log(props);
   const [select1Value, setSelect1Value] = useState('');
   const [select2Value, setSelect2Value] = useState('');
 
@@ -14,43 +15,50 @@ export default function SearchBar(props) {
     setSelect2Value(event.target.value);
   };
 
-  const handleSearch = () => {
-    console.log('Search button clicked');
-    console.log('Select 1 value: ', select1Value);
-    console.log('Select 2 value: ', select2Value);
+  function handleWorkersFilter(workerArea) {
+    workerArea !== 'all'
+      ? props.setFilteredWorkers(filterWork(workerArea))
+      : props.setFilteredWorkers(props.workers);
+  }
+
+  function filterWork(area) {
+    let filteredWorkers = props.workers.filter(
+      (worker) => worker.area === area,
+    );
+    return filteredWorkers;
+  }
+
+  const handleSearch = (evt) => {
+    evt.preventDefault();
+    props.setMapActive(true);
+    handleWorkersFilter(select2Value);
   };
 
   return (
     <>
-      <div className="searchbar">
-        <select
+      <form className="searchbar" onSubmit={handleSearch}>
+        {/* <select
           value={select1Value}
           onChange={handleSelect1Change}
           className="searchbar__select"
         >
           <option value="">Ciudad</option>
-          <option value="santiago">Santiago</option>
-          <option value="valparaiso">Valparaíso</option>
           <option value="vinadelmar">Viña del Mar</option>
-          <option value="quillota">Quillota</option>
-          <option value="quilpue">Quilpué</option>
-        </select>
+        </select> */}
         <select
           value={select2Value}
           onChange={handleSelect2Change}
           className="searchbar__select"
         >
           <option>Especialidad</option>
-          <option value="automotriz">Automotriz</option>
-          <option value="pintura">Pintura</option>
-          <option value="construccion">Construcción</option>
-          <option value="plomeria">Plomería</option>
-          <option value="electricidad">Electricidad</option>
+          <option value="Automotriz">Automotriz</option>
+          <option value="Pintura">Pintura</option>
+          <option value="Construcción">Construcción</option>
+          <option value="Plomería">Plomería</option>
+          <option value="Electricidad">Electricidad</option>
         </select>
-        <button className="searchbar__button" onClick={handleSearch}>
-          Buscar 🔍
-        </button>
-      </div>
+        <button className="searchbar__button">Buscar 🔍</button>
+      </form>
       <p className="searchbar__info">{props.info}</p>
     </>
   );

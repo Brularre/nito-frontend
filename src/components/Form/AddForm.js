@@ -14,7 +14,7 @@ export default function AddForm() {
             </h3>
             {/* Nombre */}
             <div className="form__input-container">
-              <label className="form__label" for="worker-name">
+              <label className="form__label" htmlFor="worker-name">
                 Nombre de Especialista o Empresa*
               </label>
               <input
@@ -32,7 +32,7 @@ export default function AddForm() {
 
             {/* Area de Especialidad */}
             <div className="form__input-container">
-              <label className="form__label" for="worker-area">
+              <label className="form__label" htmlFor="worker-area">
                 Área de especialidad*
               </label>
               <select
@@ -53,7 +53,7 @@ export default function AddForm() {
 
             {/* Correo electrónico */}
             <div className="form__input-container">
-              <label className="form__label" for="worker-email">
+              <label className="form__label" htmlFor="worker-email">
                 Correo de contacto
               </label>
               <input
@@ -70,7 +70,7 @@ export default function AddForm() {
 
             {/* Teléfono */}
             <div className="form__input-container">
-              <label className="form__label" for="worker-phone">
+              <label className="form__label" htmlFor="worker-phone">
                 Número de contacto
               </label>
               <input

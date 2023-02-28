@@ -1,6 +1,6 @@
 .footer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   color: var(--text-black);
   padding: 25px;
   padding-top: var(--separator);
@@ -15,12 +15,18 @@
   gap: 10px;
 }
 
+@media screen and (min-width: 768px) {
+  .footer {
+    justify-content: center;
+  }
+}
+
 .footer__logo {
   width: 150px;
 }
 
 .footer__description {
-  width: 40%;
+  width: 70%;
   font-size: var(--size-text-small);
   font-weight: 400;
   color: var(--text-gray);

@@ -1,0 +1,43 @@
+.filter-btn {
+  font-size: var(--size-text-small);
+  font-weight: 400;
+  height: 40px;
+  width: 125px;
+  text-align: center;
+  color: var(--text-white);
+  background-color: var(--primary-dark);
+  border: 0;
+  border-radius: 20px;
+  transition: all 0.2s;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.filter-btn:hover {
+  cursor: pointer;
+  translate: 0 -20%;
+  background-color: var(--primary-accent);
+  color: var(--text-black);
+}
+
+.filter-btn_primary {
+  background-color: var(--primary-dark);
+}
+
+.filter-btn_blue {
+  background-color: var(--worker-blue);
+}
+.filter-btn_green {
+  background-color: var(--worker-green);
+}
+.filter-btn_violet {
+  background-color: var(--worker-violet);
+}
+.filter-btn_yellow {
+  background-color: var(--worker-yellow);
+}
+.filter-btn_orange {
+  background-color: var(--worker-orange);
+}
+.filter-btn_red {
+  background-color: var(--worker-red);
+}

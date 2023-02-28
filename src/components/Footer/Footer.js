@@ -41,16 +41,16 @@ export default function Footer() {
         <div className="footer__column">
           <h3 className="footer__title">Navegación</h3>
           <nav className="footer__navbar">
-            <Link exact className="footer__link" to="/#home">
+            <Link className="footer__link" to="/#home">
               Inicio
             </Link>
-            <Link exact className="footer__link" to="/#suggested">
+            <Link className="footer__link" to="/#suggested">
               Sugeridos
             </Link>
-            <Link exact className="footer__link" to="/#form">
+            <Link className="footer__link" to="/#form">
               Agregar dato
             </Link>
-            <Link exact className="footer__link" to="/#about">
+            <Link className="footer__link" to="/#about">
               Sobre mi
             </Link>
           </nav>
