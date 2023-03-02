@@ -24,11 +24,16 @@ node seeds/index.js
 
 ## Versiones
 
+2.0 - Feat: Versión Minimum viable product.
 1.0 - Feat: Agrega esqueleto base frontend.
 
 ## Mapa de Ruta
 
-El proyecto se considerará terminado una vez entregado con todas las correcciones pertinentes. En un futuro se espera incluir reservaciones y calendarización.
+El proyecto se considerará terminado una vez entregado con todas las correcciones pertinentes. Se espera implementar los siguientes features:
+
+Registro y Login de Usuarios.
+CRUD para Agregar Reseñas de los Profesionales.
+Página para postear proyectos o trabajos y poder calendarizar citas con profesionales.
 
 ## Contact
 
