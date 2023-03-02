@@ -1,5 +1,14 @@
-import React from 'react';
-import { MapContainer, TileLayer, Popup, Marker } from 'react-leaflet';
+import { useContext, useState, useEffect } from 'react';
+import { AppContext } from '../../contexts/AppContext';
+import {
+  MapContainer,
+  TileLayer,
+  Popup,
+  Marker,
+  useMap,
+  useMapEvents,
+  useMapEvent,
+} from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
@@ -10,8 +19,9 @@ import yellowIcon from '../../images/worker-yellow.png';
 import orangeIcon from '../../images/worker-orange.png';
 import redIcon from '../../images/worker-red.png';
 
-export default function Map({ workers }) {
-  const initialPosition = [-33.0153, -71.5505];
+export default function Map() {
+  const { filteredWorkers, mapPosition, setMapPosition } =
+    useContext(AppContext);
 
   const workerIcons = {
     construcción: new L.Icon({
@@ -44,36 +54,39 @@ export default function Map({ workers }) {
     return workerIcons[area.toLowerCase()] || new L.Icon.Default();
   };
 
+  const RecenterAutomatically = (mapPosition) => {
+    const map = useMap();
+    useEffect(() => {
+      map.setView(mapPosition);
+    }, [mapPosition]);
+    return null;
+  };
   return (
-    <>
-      <div className="map">
-        <MapContainer
-          center={initialPosition}
-          zoom={12}
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {workers.map((worker) => (
-            <Marker
-              position={worker.location}
-              key={worker._id}
-              icon={getWorkerIcon(worker.area)}
-            >
-              <Popup>
-                <h4>{worker.name}</h4>
-                Especialidad: {worker.area} <br />
-                Ciudad: {worker.city} <br />
-                Web: {worker.link} <br />
-                Correo: {worker.email} <br />
-                Teléfono: {worker.telephone} <br />
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
-      </div>
-    </>
+    <div className="map">
+      <MapContainer center={mapPosition} zoom={12} scrollWheelZoom={true}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {filteredWorkers.map((worker) => (
+          <Marker
+            position={worker.location}
+            key={worker._id}
+            icon={getWorkerIcon(worker.area)}
+            eventHandlers={{ click: setMapPosition(worker.location) }}
+          >
+            <Popup>
+              <h4>{worker.name}</h4>
+              Especialidad: {worker.area} <br />
+              Ciudad: {worker.city} <br />
+              Web: {worker.link} <br />
+              Correo: {worker.email} <br />
+              Teléfono: {worker.telephone} <br />
+            </Popup>
+          </Marker>
+        ))}
+        <RecenterAutomatically mapPosition={mapPosition} />
+      </MapContainer>
+    </div>
   );
 }

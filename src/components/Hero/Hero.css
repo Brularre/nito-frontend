@@ -1,5 +1,5 @@
 .hero {
-  min-height: 90vh;
+  min-height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,6 +24,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding-top: 70px;
   color: var(--text-white);
@@ -46,28 +48,9 @@
 .hero__subtitle {
   font-size: var(--size-text);
   width: 70%;
-  margin: auto;
+  margin: 0;
   padding: 10px 0;
   filter: drop-shadow(0 2px 2px var(--primary-dark));
-}
-
-.hero__button {
-  font-size: var(--size-text);
-  font-weight: bold;
-  width: 40%;
-  height: 32px;
-  background-color: var(--primary-accent);
-  color: var(--text-black);
-  border-radius: 20px 20px;
-  border: 0;
-  margin: auto;
-  transition: all 0.2s;
-}
-
-.hero__button:hover {
-  translate: 0 -20%;
-  background-color: var(--primary-dark);
-  color: var(--text-white);
 }
 
 @media screen and (min-width: 1024px) {

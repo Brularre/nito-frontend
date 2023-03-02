@@ -1,0 +1,25 @@
+@keyframes hoverEffect {
+  0% {
+    translate: 0;
+    cursor: pointer;
+  }
+  100% {
+    translate: 0 -20%;
+    cursor: pointer;
+    background-color: var(--primary-accent);
+    color: var(--text-black);
+  }
+}
+
+@keyframes heroHoverEffect {
+  0% {
+    translate: 0;
+    cursor: pointer;
+  }
+  100% {
+    translate: 0 -20%;
+    cursor: pointer;
+    background-color: var(--primary-dark);
+    color: var(--text-white);
+  }
+}

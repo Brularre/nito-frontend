@@ -1,12 +1,9 @@
 .suggested {
-  max-width: 1600px;
-  width: 90%;
-  margin: auto;
+  padding: 0 50px;
   padding-top: var(--separator);
 }
 
 .suggested__header {
-  margin: auto;
   display: flex;
   justify-content: space-between;
 }
@@ -16,7 +13,6 @@
   font-size: 16px;
   color: var(--primary-dark);
   margin: 0;
-  grid-row: 0 1;
 }
 
 .suggested__title {
@@ -28,7 +24,7 @@
 .suggested__filter-container {
   display: flex;
   flex-wrap: wrap;
-  width: 60%;
+  width: 70%;
   gap: 5px;
 }
 
@@ -42,16 +38,7 @@
   padding: 40px 0;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   gap: 15px;
-  transition: all 0.6s;
+  transition: all 0.3s;
   justify-content: center;
-  /* opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease; */
 }
-
-/* .suggested__list_visible {
-  opacity: 1;
-  transform: translateY(0);
-} */

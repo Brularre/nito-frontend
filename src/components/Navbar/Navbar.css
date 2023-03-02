@@ -9,7 +9,7 @@
   font-size: var(--size-text);
   text-decoration: none;
   filter: drop-shadow(0 2px 4px var(--primary-dark));
-  transition: all 0.6s;
+  transition: all 0.3s;
 }
 
 .navbar__item:hover {

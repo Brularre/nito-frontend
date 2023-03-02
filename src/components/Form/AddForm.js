@@ -1,9 +1,9 @@
 import './Form.css';
-import placeholder from '../../images/card__placeholder.png';
+import Button from '../Button/Button';
 
 export default function AddForm() {
   return (
-    <div className="form">
+    <div id="add-form" className="form">
       <form className="form__element" name="form__add-form" id="form__add-form">
         <div className="form__row">
           <div className="form__column">
@@ -90,9 +90,7 @@ export default function AddForm() {
             <div className="form__map" />
           </div>
         </div>
-        <button type="submit" className="form__btn">
-          Agregar a la comunidad
-        </button>
+        <Button type="submit" color="accent" text="Agregar a la comunidad" />
       </form>
     </div>
   );

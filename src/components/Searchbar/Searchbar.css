@@ -11,12 +11,12 @@
 
 .searchbar__button {
   width: 20%;
-  height: 32px;
+  height: 36px;
   background-color: var(--primary-dark);
   color: var(--text-white);
   border-radius: 5px 20px 20px 5px;
   border: 0;
-  transition: all 0.2s;
+  transition: all 0.3s;
 }
 
 .searchbar__button:hover {

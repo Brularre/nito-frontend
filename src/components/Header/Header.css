@@ -1,10 +1,10 @@
 .header {
   max-width: 1600px;
   display: flex;
+  justify-content: space-between;
   position: relative;
   z-index: 999;
   padding: 0 50px;
-  margin: auto;
   top: 75px;
 }
 
@@ -12,7 +12,7 @@
   width: 125px;
   height: 100%;
   filter: drop-shadow(0 2px 4px var(--primary-dark));
-  transition: all 0.6s;
+  transition: all 0.3s;
 }
 
 .header__logo:hover {

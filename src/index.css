@@ -6,6 +6,10 @@
 
 @import url(./fonts/lato.css);
 
+/* Animaciones */
+
+@import url(./animations/hover-effect.css);
+
 /* Ajustes Globales */
 
 html {
@@ -43,7 +47,7 @@ body {
   --size-text: 18px;
   --size-text-small: 14px;
 
-  --separator: 30px;
+  --separator: 50px;
 }
 
 #root {

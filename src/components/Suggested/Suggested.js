@@ -1,9 +1,12 @@
 import './Suggested.css';
-import FilterButton from '../FilterButton/FilterButton';
+import Button from '../Button/Button';
 import ListItem from '../ListItem/ListItem';
 import { filters } from '../../utils/constants';
+import { useContext } from 'react';
+import { AppContext } from '../../contexts/AppContext';
 
-export default function Suggested(props) {
+export default function Suggested() {
+  const { filteredWorkers, handleWorkersFilter } = useContext(AppContext);
   return (
     <div id="suggested" className="suggested">
       <div className="suggested__header">
@@ -13,9 +16,9 @@ export default function Suggested(props) {
         </div>
         <div className="suggested__filter-container">
           {filters.map((filter) => (
-            <FilterButton
+            <Button
               key={filter.value}
-              onClick={props.filterWorkers}
+              onClick={() => handleWorkersFilter(filter.value)}
               color={filter.color}
               value={filter.value}
               text={filter.text}
@@ -24,7 +27,7 @@ export default function Suggested(props) {
         </div>
       </div>
       <div className="suggested__list">
-        {props.filteredWorkers.map((worker) => (
+        {filteredWorkers.map((worker) => (
           <ListItem listData={worker} key={worker._id} />
         ))}
       </div>

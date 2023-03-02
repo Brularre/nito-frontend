@@ -1,25 +1,27 @@
-// Imports Dependencies
-import { Switch, Route } from 'react-router-dom';
-
 // Components
-import Main from '../Main/Main';
+import Header from '../Header/Header';
+import AppProvider from '../../providers/AppProvider';
+import Hero from '../Hero/Hero';
+import Map from '../Map/Map';
+import Suggested from '../Suggested/Suggested';
+import AddForm from '../Form/AddForm';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
 
-function App() {
-  // App States
-
+export default function App() {
   return (
     <>
-      <Switch>
-        <Route path="/">
-          <Main />
+      <AppProvider>
+        <Header />
+        <Hero />
+        <Map />
+        <main>
+          <Suggested />
+          <AddForm />
           <About />
-        </Route>
-      </Switch>
+        </main>
+      </AppProvider>
       <Footer />
     </>
   );
 }
-
-export default App;
