@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { AppContext } from '../../contexts/AppContext';
-import { HashLink as Link } from 'react-router-hash-link';
 import './Hero.css';
 import SearchBar from '../Searchbar/Searchbar';
 
@@ -16,11 +15,8 @@ export default function Hero() {
         </p>
         <SearchBar info="Por el momento sólo tenemos búsquedas en ciertos territorios solamente" />
         <h2 className="hero__subtitle">
-          Si tienes un dato de confianza, no dudes en agregarlo 😊
+          Puedes agregar tus datos de confianza, haciendo click derecho 😊
         </h2>
-        <Link className="button" to="/#add-form">
-          Agregar Dato
-        </Link>
       </div>
     </div>
   );

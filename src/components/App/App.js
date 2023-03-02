@@ -1,27 +1,34 @@
+import { useState } from 'react';
+
 // Components
+import Preloader from '../Preloader/Preloader';
 import Header from '../Header/Header';
 import AppProvider from '../../providers/AppProvider';
 import Hero from '../Hero/Hero';
 import Map from '../Map/Map';
 import Suggested from '../Suggested/Suggested';
-import AddForm from '../Form/AddForm';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <>
-      <AppProvider>
-        <Header />
-        <Hero />
-        <Map />
-        <main>
-          <Suggested />
-          <AddForm />
-          <About />
-        </main>
-      </AppProvider>
-      <Footer />
-    </>
+    <AppProvider handleLoading={setIsLoading}>
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <>
+          <Header />
+          <Hero />
+          <Map />
+          <main>
+            <Suggested />
+            <About />
+          </main>
+          <Footer />
+        </>
+      )}
+    </AppProvider>
   );
 }

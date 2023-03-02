@@ -46,9 +46,6 @@ export default function Footer() {
           <Link className="footer__link" to="/#suggested">
             Sugeridos
           </Link>
-          <Link className="footer__link" to="/#form">
-            Agregar dato
-          </Link>
           <Link className="footer__link" to="/#about">
             Sobre mi
           </Link>

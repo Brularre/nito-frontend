@@ -21,9 +21,6 @@ export default function NavBar() {
               <Link className="navbar__item" to="/#suggested">
                 Sugeridos
               </Link>
-              <Link className="navbar__item" to="/#form">
-                Agregar dato
-              </Link>
               <Link className="navbar__item" to="/#about">
                 Sobre mi
               </Link>

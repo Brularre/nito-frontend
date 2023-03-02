@@ -7,6 +7,7 @@ import { AppContext } from '../../contexts/AppContext';
 
 export default function Suggested() {
   const { filteredWorkers, handleWorkersFilter } = useContext(AppContext);
+
   return (
     <div id="suggested" className="suggested">
       <div className="suggested__header">

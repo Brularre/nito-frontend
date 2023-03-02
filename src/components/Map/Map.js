@@ -1,66 +1,51 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { AppContext } from '../../contexts/AppContext';
 import {
   MapContainer,
   TileLayer,
   Popup,
   Marker,
-  useMap,
   useMapEvents,
-  useMapEvent,
 } from 'react-leaflet';
-import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
-import blueIcon from '../../images/worker-blue.png';
-import greenIcon from '../../images/worker-green.png';
-import violetIcon from '../../images/worker-violet.png';
-import yellowIcon from '../../images/worker-yellow.png';
-import orangeIcon from '../../images/worker-orange.png';
-import redIcon from '../../images/worker-red.png';
+import { workerIcons } from '../../utils/constants';
+import AddForm from '../AddForm/AddForm';
 
 export default function Map() {
-  const { filteredWorkers, mapPosition, setMapPosition } =
-    useContext(AppContext);
-
-  const workerIcons = {
-    construcción: new L.Icon({
-      iconUrl: greenIcon,
-      iconSize: [32, 46],
-    }),
-    automotriz: new L.Icon({
-      iconUrl: blueIcon,
-      iconSize: [32, 46],
-    }),
-    electricidad: new L.Icon({
-      iconUrl: violetIcon,
-      iconSize: [32, 46],
-    }),
-    limpieza: new L.Icon({
-      iconUrl: yellowIcon,
-      iconSize: [32, 46],
-    }),
-    pintura: new L.Icon({
-      iconUrl: orangeIcon,
-      iconSize: [32, 46],
-    }),
-    plomería: new L.Icon({
-      iconUrl: redIcon,
-      iconSize: [32, 46],
-    }),
-  };
+  const {
+    filteredWorkers,
+    mapPosition,
+    setMapPosition,
+    isAddFormOpen,
+    setAddFormOpen,
+  } = useContext(AppContext);
 
   const getWorkerIcon = (area) => {
-    return workerIcons[area.toLowerCase()] || new L.Icon.Default();
+    return workerIcons[area];
   };
 
-  const RecenterAutomatically = (mapPosition) => {
-    const map = useMap();
-    useEffect(() => {
-      map.setView(mapPosition);
-    }, [mapPosition]);
-    return null;
-  };
+  function AddFormPopup() {
+    const map = useMapEvents({
+      contextmenu(evt) {
+        setMapPosition([evt.latlng.lat, evt.latlng.lng]);
+        map.setView(evt.latlng);
+        setAddFormOpen(true);
+      },
+    });
+    return (
+      isAddFormOpen && (
+        <Popup
+          position={mapPosition}
+          className="popup__add-form"
+          onClose={() => setAddFormOpen(false)}
+        >
+          <AddForm />
+        </Popup>
+      )
+    );
+  }
+
   return (
     <div className="map">
       <MapContainer center={mapPosition} zoom={12} scrollWheelZoom={true}>
@@ -73,19 +58,17 @@ export default function Map() {
             position={worker.location}
             key={worker._id}
             icon={getWorkerIcon(worker.area)}
-            eventHandlers={{ click: setMapPosition(worker.location) }}
           >
             <Popup>
               <h4>{worker.name}</h4>
               Especialidad: {worker.area} <br />
-              Ciudad: {worker.city} <br />
-              Web: {worker.link} <br />
-              Correo: {worker.email} <br />
-              Teléfono: {worker.telephone} <br />
+              Ciudad: {worker.city || 'Viña del Mar'} <br />
+              Correo: {worker.email || 'No Ingresado'} <br />
+              Teléfono: {worker.telephone || 'No Ingresado'} <br />
             </Popup>
           </Marker>
         ))}
-        <RecenterAutomatically mapPosition={mapPosition} />
+        <AddFormPopup />
       </MapContainer>
     </div>
   );

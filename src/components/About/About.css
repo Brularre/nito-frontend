@@ -46,9 +46,9 @@
 }
 
 .about__main-image {
-  margin-top: 20px;
-  width: 100%;
-  align-self: flex-start;
+  margin-top: 40px;
+  width: 80%;
+  align-self: center;
   border-radius: 20px;
   grid-area: main-image;
   filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.25));
@@ -64,6 +64,7 @@
   }
 
   .about__main-image {
+    width: 100%;
     align-self: center;
     margin: 0;
   }

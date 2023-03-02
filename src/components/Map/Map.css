@@ -13,13 +13,12 @@
   position: absolute;
   top: 0;
   right: 0;
-  background: #fff;
   border: 1px solid #999;
   border-radius: 50%;
   padding: 3px 6px;
   cursor: pointer;
   text-align: center;
-  font-size: var(--size-text-small);
+  font-size: var(--size-text);
   line-height: 1;
   margin: 4px;
 }
@@ -28,6 +27,28 @@
   z-index: 400;
   top: 20%;
   left: 10px;
+}
+
+.leaflet-popup-content {
+  width: 500px !important;
+}
+
+.popup__add-form .leaflet-popup-content-wrapper {
+  width: 100%;
+  background: linear-gradient(
+      to top right,
+      rgba(3, 64, 120, 0.5) 10%,
+      rgba(3, 64, 120, 0.8) 60%
+    ),
+    url(../../images/form__background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.25));
+}
+
+.popup__add-form .leaflet-popup-close-button {
+  color: var(--text-white) !important;
 }
 
 .leaflet-bottom {
