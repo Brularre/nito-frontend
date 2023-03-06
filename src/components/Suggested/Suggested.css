@@ -1,0 +1,44 @@
+.suggested {
+  padding: 0 50px;
+  padding-top: var(--separator);
+}
+
+.suggested__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.suggested__section-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+.suggested__title {
+  font-weight: 600;
+  font-size: var(--size-section-title);
+  margin: 0;
+}
+
+.suggested__filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  gap: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .suggested__filter-container {
+    justify-content: end;
+  }
+}
+
+.suggested__list {
+  padding: 40px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  transition: all 0.3s;
+  justify-content: center;
+}

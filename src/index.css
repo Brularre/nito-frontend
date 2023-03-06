@@ -1,0 +1,60 @@
+/* Normalizar CSS */
+
+@import url(./vendor/normalize.css);
+
+/* Fuentes */
+
+@import url(./fonts/lato.css);
+
+/* Animaciones */
+
+@import url(./animations/hover-effect.css);
+
+/* Ajustes Globales */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-light);
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+:root {
+  --bg-light: #e8e8e8;
+  --bg-dark: #0d1f2d;
+  --primary-accent: #f1cc59;
+  --primary-light: #3f9eca;
+  --primary-dark: #034078;
+  --text-black: #212427;
+  --text-white: #e8e8e8;
+  --text-gray: #333333;
+  --text-lighter-gray: #777;
+  --test: magenta;
+  --select-border: #777;
+
+  --worker-blue: #3f84e5;
+  --worker-green: #4b7f52;
+  --worker-violet: #60435f;
+  --worker-yellow: #cc8500;
+  --worker-orange: #d0653e;
+  --worker-red: #ab2a32;
+
+  --size-section-title: 28px;
+  --size-section-subtitle: 16px;
+  --size-title: 22px;
+  --size-text: 18px;
+  --size-text-small: 14px;
+
+  --separator: 50px;
+}
+
+#root {
+  width: 95%;
+  margin: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
