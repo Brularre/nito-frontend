@@ -1,9 +1,9 @@
-import blueIcon from '../images/worker-blue.png';
-import greenIcon from '../images/worker-green.png';
-import violetIcon from '../images/worker-violet.png';
-import yellowIcon from '../images/worker-yellow.png';
-import orangeIcon from '../images/worker-orange.png';
-import redIcon from '../images/worker-red.png';
+import blueIcon from '../images/worker-blue.svg';
+import greenIcon from '../images/worker-green.svg';
+import violetIcon from '../images/worker-violet.svg';
+import yellowIcon from '../images/worker-yellow.svg';
+import orangeIcon from '../images/worker-orange.svg';
+import redIcon from '../images/worker-red.svg';
 import L from 'leaflet';
 
 const BASE_URL = 'https://api.brularre.nito.students.nomoredomainssbs.ru';
@@ -81,29 +81,29 @@ const filters = [
 ];
 
 const workerIcons = {
-  Construcción: new L.Icon({
-    iconUrl: greenIcon,
-    iconSize: [32, 46],
-  }),
   Automotriz: new L.Icon({
     iconUrl: blueIcon,
-    iconSize: [32, 46],
+    iconSize: 45,
+  }),
+  Construcción: new L.Icon({
+    iconUrl: greenIcon,
+    iconSize: 45,
   }),
   Electricidad: new L.Icon({
     iconUrl: violetIcon,
-    iconSize: [32, 46],
+    iconSize: 45,
   }),
   Limpieza: new L.Icon({
     iconUrl: yellowIcon,
-    iconSize: [32, 46],
+    iconSize: 45,
   }),
   Pintura: new L.Icon({
     iconUrl: orangeIcon,
-    iconSize: [32, 46],
+    iconSize: 45,
   }),
   Plomería: new L.Icon({
     iconUrl: redIcon,
-    iconSize: [32, 46],
+    iconSize: 45,
   }),
 };
 

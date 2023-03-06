@@ -12,7 +12,7 @@
   width: 95%;
   border-radius: 50px 0;
   position: absolute;
-  top: 15px;
+  top: 23px;
 }
 
 .hero_hidden {
@@ -27,13 +27,13 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: 70px;
+  padding-top: 120px;
   color: var(--text-white);
   filter: drop-shadow(0 2px 4px var(--primary-dark));
 }
 
 .hero__title {
-  font-size: 36px;
+  font-size: 32px;
   margin: 0;
 }
 
@@ -54,11 +54,13 @@
   filter: drop-shadow(0 2px 2px var(--primary-dark));
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .hero {
-    top: 25px;
+    top: 33px;
   }
+}
 
+@media screen and (min-width: 1024px) {
   .hero__content {
     width: 80%;
     padding-top: 0;

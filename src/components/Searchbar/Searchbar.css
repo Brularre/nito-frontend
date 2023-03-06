@@ -16,13 +16,10 @@
   color: var(--text-white);
   border-radius: 5px 20px 20px 5px;
   border: 0;
-  transition: all 0.3s;
 }
 
 .searchbar__button:hover {
-  translate: 0 -20%;
-  background-color: var(--primary-accent);
-  color: var(--text-black);
+  animation: hoverEffect 0.3s forwards;
 }
 
 .searchbar__select {

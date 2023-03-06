@@ -10,8 +10,6 @@ export default function AppProvider({ handleLoading, children }) {
   const [mapPosition, setMapPosition] = useState([-33.0153, -71.5505]);
   const [isAddFormOpen, setAddFormOpen] = useState(false);
 
-  console.log(handleLoading);
-
   useEffect(() => {
     api
       .getWorkers()

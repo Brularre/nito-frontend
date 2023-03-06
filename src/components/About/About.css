@@ -18,14 +18,14 @@
 }
 
 .about__section-name {
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--size-section-subtitle);
   color: var(--primary-dark);
   margin: 0;
 }
 
 .about__title {
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--size-section-title);
   margin: 0;
 }
