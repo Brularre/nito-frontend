@@ -107,4 +107,43 @@ const workerIcons = {
   }),
 };
 
-export { BASE_URL, workerStyles, filters, workerIcons };
+const inputProps = {
+  userName: {
+    label: 'Nombre* (aparece en caso que postees una reseña)',
+    type: 'text',
+    value: 'username',
+    placeholder: 'Nombre',
+    length: {
+      min: '2',
+      max: '40',
+    },
+    isRequired: true,
+    width: 'form__input_full-width',
+  },
+  userEmail: {
+    label: 'Correo Electrónico',
+    type: 'email',
+    value: 'email',
+    placeholder: 'Email',
+    length: {
+      min: '4',
+      max: '254',
+    },
+    isRequired: true,
+    width: 'form__input_full-width',
+  },
+  userPassword: {
+    label: 'Contraseña',
+    type: 'password',
+    value: 'password',
+    placeholder: 'Contraseña',
+    length: {
+      min: '2',
+      max: '12',
+    },
+    isRequired: true,
+    width: 'form__input_full-width',
+  },
+};
+
+export { BASE_URL, workerStyles, filters, workerIcons, inputProps };

@@ -1,26 +1,48 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  padding: 25px 0;
-  text-align: center;
-  gap: 15px;
-  filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.25));
+  padding: 0 35px;
+  padding-top: var(--separator);
 }
 
+.add-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  text-align: center;
+  border-radius: 20px;
+  padding: 15px;
+  gap: 15px;
+  filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.25));
+  /* background: linear-gradient(
+    to top right,
+    rgba(3, 64, 120, 0.5) 10%,
+    rgba(3, 64, 120, 0.8) 60%
+  ); */
+  /* ,    url(../../images/form__background.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .form__title {
-  font-size: var(--size-title);
+  width: 100%;
+  font-size: var(--size-section-title);
   color: var(--text-white);
   margin: 0;
   filter: drop-shadow(0 2px 4px var(--primary-dark));
 }
 
-.form__input-container {
+.form__subtitle {
+  font-size: var(--size-text);
+  color: var(--text-white);
+  font-weight: 300;
+  margin: 0;
+  margin: auto;
+  filter: drop-shadow(0 2px 4px var(--primary-dark));
+}
+
+/* .form__input-container {
+  width: 48%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .form__label {
@@ -28,11 +50,10 @@
   color: var(--text-white);
   margin: 0;
   filter: drop-shadow(0 2px 4px var(--primary-dark));
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .form__input {
-  width: 350px;
   border: 1px solid var(--select-border);
   border-radius: 10px;
   padding: 8px 8px;
@@ -45,15 +66,15 @@
 .form__input::placeholder {
   color: var(--select-border);
   font-size: var(--size-text-small);
-}
+} */
 
 .form__select {
-  width: 350px;
-  font-size: var(--size-text-small);
-  color: var(--select-border);
   border: 1px solid var(--select-border);
   border-radius: 10px;
-  padding: 4px 4px;
+  font-size: var(--size-text-small);
+  color: var(--select-border);
+
+  padding: 8px 8px;
   cursor: pointer;
   outline: none;
   filter: drop-shadow(0 2px 4px var(--primary-dark));

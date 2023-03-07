@@ -29,11 +29,10 @@
 }
 
 .leaflet-popup-content {
-  width: 500px !important;
+  width: 550px !important;
 }
 
 .popup__add-form .leaflet-popup-content-wrapper {
-  width: 100%;
   background: linear-gradient(
       to top right,
       rgba(3, 64, 120, 0.5) 10%,
@@ -57,12 +56,12 @@
 .leaflet-container {
   height: 75vh;
   border-radius: 50px 0;
-  top: -35px;
+  top: -26px;
 }
 
 @media screen and (min-width: 768px) {
   .leaflet-container {
     width: 100%;
-    top: -15px;
+    top: -7px;
   }
 }

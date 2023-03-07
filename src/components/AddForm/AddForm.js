@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../../contexts/AppContext';
 import './AddForm.css';
+// import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 
 export default function AddForm() {
@@ -31,13 +32,14 @@ export default function AddForm() {
 
   return (
     <form
-      className="form"
+      className="add-form"
       name="add-form"
       id="add-form"
       onSubmit={handleAddWorker}
     >
       <h2 className="form__title">Agrega un datito</h2>
       {/* Nombre */}
+
       <div className="form__input-container">
         <label className="form__label" htmlFor="name">
           Nombre de Especialista o Empresa*
@@ -47,7 +49,7 @@ export default function AddForm() {
           name="name"
           id="name"
           className="form__input"
-          placeholder="Nombre Especialista o Empresa"
+          placeholder="Nombre"
           minLength="4"
           maxLength="40"
           required

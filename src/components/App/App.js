@@ -7,6 +7,7 @@ import AppProvider from '../../providers/AppProvider';
 import Hero from '../Hero/Hero';
 import Map from '../Map/Map';
 import Suggested from '../Suggested/Suggested';
+import Form from '../Form/Form';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
 
@@ -24,6 +25,7 @@ export default function App() {
           <Map />
           <main>
             <Suggested />
+            <Form />
             <About />
           </main>
           <Footer />

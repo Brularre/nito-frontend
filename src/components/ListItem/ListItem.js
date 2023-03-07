@@ -2,6 +2,8 @@ import './ListItem.css';
 import { workerStyles } from '../../utils/constants';
 
 export default function Card({ listData }) {
+  console.log(listData);
+
   return (
     <div style={workerStyles[listData.area]} className="list-item">
       <div className="list-item__content-box">
