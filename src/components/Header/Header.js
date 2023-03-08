@@ -1,5 +1,10 @@
-import NavBar from '../Navbar/Navbar';
+// Imports
 import mainLogo from '../../images/Logo-White.png';
+
+// Components
+import NavBar from '../Navbar/Navbar';
+
+// Styles
 import './Header.css';
 
 export default function Header() {

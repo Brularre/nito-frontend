@@ -1,3 +1,4 @@
+// Style
 import './Button.css';
 
 export default function Button({ type, onClick, value, color, text }) {

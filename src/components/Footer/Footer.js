@@ -1,8 +1,11 @@
+// Imports
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
-import './Footer.css';
 import logo from '../../images/Logo-Gradient.png';
+
+// Style
+import './Footer.css';
 
 export default function Footer() {
   return (

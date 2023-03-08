@@ -1,6 +1,11 @@
-import './About.css';
-import Button from '../Button/Button';
+// Imports
 import aboutMainImage from '../../images/about_main-image.jpg';
+
+// Components
+import Button from '../Button/Button';
+
+// Style
+import './About.css';
 
 export default function About() {
   return (
