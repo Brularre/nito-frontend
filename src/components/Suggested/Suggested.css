@@ -9,14 +9,14 @@
 }
 
 .suggested__section-name {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 16px;
   color: var(--primary-dark);
   margin: 0;
 }
 
 .suggested__title {
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--size-section-title);
   margin: 0;
 }
@@ -35,7 +35,7 @@
 }
 
 .suggested__list {
-  padding: 40px 0;
+  padding-top: 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;

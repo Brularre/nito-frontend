@@ -38,8 +38,10 @@ export default function SearchBar(props) {
           value={select2Value}
           onChange={handleSelect2Change}
           className="searchbar__select"
+          required
         >
-          <option value="all">Especialidad</option>
+          <option>Especialidad</option>
+          <option value="all">Todos</option>
           <option value="Automotriz">Automotriz</option>
           <option value="Pintura">Pintura</option>
           <option value="Construcción">Construcción</option>

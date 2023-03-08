@@ -10,7 +10,12 @@ export default function AppProvider({ handleLoading, children }) {
   const [mapPosition, setMapPosition] = useState([-33.0153, -71.5505]);
   const [isAddFormOpen, setAddFormOpen] = useState(false);
 
-  console.log(handleLoading);
+  // function x() {
+  //   // setear el mapa activo
+  //   // setear map position
+  //   // se importa en listItem y se ejecuta en el onClick
+  //   // toma el location del listItem
+  // }
 
   useEffect(() => {
     api
@@ -30,9 +35,9 @@ export default function AppProvider({ handleLoading, children }) {
   }, [workers]);
 
   function handleWorkersFilter(workerArea) {
+    setMapActive(true);
     if (workerArea !== 'all') {
       setFilteredWorkers(filterWork(workerArea));
-      setMapActive(true);
     } else {
       setFilteredWorkers(workers);
     }

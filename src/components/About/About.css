@@ -1,12 +1,12 @@
 .about {
-  padding: 0 50px;
+  padding: 50px;
   padding-top: var(--separator);
 }
 
 .about__container {
   background-color: #f2f2f2;
   border-radius: 20px;
-  padding: 50px;
+  padding: 70px;
   filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.25));
   display: flex;
   flex-direction: column;
@@ -18,14 +18,14 @@
 }
 
 .about__section-name {
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--size-section-subtitle);
   color: var(--primary-dark);
   margin: 0;
 }
 
 .about__title {
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--size-section-title);
   margin: 0;
 }

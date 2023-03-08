@@ -47,29 +47,27 @@ export default function Map() {
   }
 
   return (
-    <div className="map">
-      <MapContainer center={mapPosition} zoom={12} scrollWheelZoom={true}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {filteredWorkers.map((worker) => (
-          <Marker
-            position={worker.location}
-            key={worker._id}
-            icon={getWorkerIcon(worker.area)}
-          >
-            <Popup>
-              <h4>{worker.name}</h4>
-              Especialidad: {worker.area} <br />
-              Ciudad: {worker.city || 'Viña del Mar'} <br />
-              Correo: {worker.email || 'No Ingresado'} <br />
-              Teléfono: {worker.telephone || 'No Ingresado'} <br />
-            </Popup>
-          </Marker>
-        ))}
-        <AddFormPopup />
-      </MapContainer>
-    </div>
+    <MapContainer center={mapPosition} zoom={12} scrollWheelZoom={true}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      {filteredWorkers.map((worker) => (
+        <Marker
+          position={worker.location}
+          key={worker._id}
+          icon={getWorkerIcon(worker.area)}
+        >
+          <Popup>
+            <h4>{worker.name}</h4>
+            Especialidad: {worker.area} <br />
+            Ciudad: {worker.city || 'Viña del Mar'} <br />
+            Correo: {worker.email || 'No Ingresado'} <br />
+            Teléfono: {worker.telephone || 'No Ingresado'} <br />
+          </Popup>
+        </Marker>
+      ))}
+      <AddFormPopup />
+    </MapContainer>
   );
 }
