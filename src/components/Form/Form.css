@@ -22,6 +22,7 @@
     url(../../images/form__background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  transition: all 0.3s;
 }
 .form__title {
   width: 100%;
@@ -39,4 +40,18 @@
   margin: 0;
   margin: auto;
   filter: drop-shadow(0 2px 4px var(--primary-dark));
+}
+
+.form__link {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-white);
+  margin: 0;
+  filter: drop-shadow(2px 2px 2px var(--primary-dark));
+}
+
+.form__link:hover {
+  animation: hoverEffect 0.3s forwards;
+  padding: 10px;
+  border-radius: 10px;
 }

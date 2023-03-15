@@ -2,6 +2,7 @@
 import { useContext, useState } from 'react';
 import { AppContext } from '../../contexts/AppContext';
 import { inputProps } from '../../utils/formProps';
+import FormProvider from '../../providers/FormProvider';
 
 // Components
 import FormInput from '../FormInput/FormInput';
@@ -11,35 +12,81 @@ import Button from '../Button/Button';
 import './Form.css';
 
 export default function Form() {
-  const [inputValues, setInputValues] = useState({});
+  const {
+    isLoggedIn,
+    isRegistered,
+    setIsRegistered,
+    handleRegister,
+    handleLogin,
+  } = useContext(AppContext);
 
-  function handleInputChange(evt) {
-    const { name, value } = evt.target;
-    setInputValues({ ...inputValues, [name]: value });
+  const [errors, setErrors] = useState({});
+  const [inputValues, setInputValues] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  function isFormOk() {
+    const isInputEmpty = Object.keys(inputValues).some(
+      (key) => !inputValues[key],
+    );
+    const isInputError = Object.keys(errors).some((key) => errors[key]);
+    return isInputEmpty || isInputError;
   }
 
+  const toggleIsRegistered = () => setIsRegistered((value) => !value);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    !isRegistered ? handleRegister(inputValues) : handleLogin(inputValues);
+    setInputValues({});
+  };
+
   return (
-    <div className="form">
-      <form className="user-form" name="form__add-form" id="form__add-form">
-        <h2 className="form__title">Regístrate</h2>
-        <h3 className="form__subtitle">
-          ¡Queremos tus datitos! Únete a nuestra comunidad y empieza a
-          compartir.
-        </h3>
-        {/* Faltan on change */}
-        <FormInput
-          {...inputProps.name}
-          label="Nombre* (aparece en caso que postees una reseña)"
-          onChange={handleInputChange}
-        />
-        <FormInput
-          {...inputProps.email}
-          label="Correo Electrónico (sólo usado para ingresar)"
-          onChange={handleInputChange}
-        />
-        <FormInput {...inputProps.password} onChange={handleInputChange} />
-        <Button type="submit" color="accent" text="Unirse a la comunidad" />
-      </form>
-    </div>
+    <>
+      {!isLoggedIn && (
+        <FormProvider
+          errors={errors}
+          setErrors={setErrors}
+          inputValues={inputValues}
+          setInputValues={setInputValues}
+        >
+          <div className="form" onSubmit={handleSubmit}>
+            <form className="user-form" name="user-form" id="user-form">
+              <h2 className="form__title">
+                {!isRegistered
+                  ? 'Únete a la comunidad'
+                  : 'Ingresa a la comunidad'}
+              </h2>
+              <h3 className="form__subtitle">
+                {!isRegistered
+                  ? '¡Queremos tus datitos! Únete a nuestra comunidad y empieza a compartir.'
+                  : '¿Ya eres miembro? Ingresa y participa de nuestra comunidad'}
+              </h3>
+              {!isRegistered && (
+                <FormInput
+                  {...inputProps.name}
+                  label="Nombre* (aparece en caso que postees una reseña)"
+                />
+              )}
+              <FormInput {...inputProps.email} />
+              <FormInput {...inputProps.password} />
+              <Button
+                inactive={isFormOk()}
+                type="submit"
+                color="accent"
+                text="Unirse a la comunidad"
+              />
+              <p onClick={toggleIsRegistered} className="form__link">
+                {!isRegistered
+                  ? '¿Ya eres miembro? Ingresa y participa de nuestra comunidad'
+                  : '¡Queremos tus datitos! Únete a nuestra comunidad y empieza a compartir.'}
+              </p>
+            </form>
+          </div>
+        </FormProvider>
+      )}
+    </>
   );
 }

@@ -32,3 +32,14 @@
 .select option:not(:first-of-type) {
   color: var(--text-gray);
 }
+
+.select__error {
+  border: 1px solid var(--error);
+}
+
+.select__error-message {
+  font-size: 12px;
+  color: var(--error);
+  filter: drop-shadow(0 2px 4px var(--primary-dark));
+  padding-top: 5px;
+}

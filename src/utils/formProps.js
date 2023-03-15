@@ -10,6 +10,7 @@ const inputProps = {
     isRequired: true,
   },
   email: {
+    label: 'Correo electrónico',
     type: 'email',
     name: 'email',
     placeholder: 'Email',
@@ -20,7 +21,7 @@ const inputProps = {
     isRequired: true,
   },
   link: {
-    label: 'Dirección Web (si existe)',
+    label: 'Dirección Web',
     type: 'url',
     name: 'link',
     placeholder: 'Enlace',
@@ -80,6 +81,7 @@ const selectProps = {
     name: 'city',
     options: (
       <>
+        <option>Elige una</option>
         <option value="Viña del Mar">Viña del Mar</option>
       </>
     ),

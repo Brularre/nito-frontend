@@ -32,6 +32,7 @@ body {
   --text-gray: #333333;
   --text-lighter-gray: #777;
   --test: magenta;
+  --error: rgb(249, 79, 79);
   --select-border: #777;
 
   --worker-blue: #3f84e5;

@@ -1,14 +1,10 @@
 // Style
 import './Button.css';
 
-export default function Button({ type, onClick, value, color, text }) {
+export default function Button({ inactive, color, text, ...props }) {
+  console.log(inactive);
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      value={value}
-      className={`button button_${color}`}
-    >
+    <button {...props} disabled={inactive} className={`button button_${color}`}>
       {text}
     </button>
   );

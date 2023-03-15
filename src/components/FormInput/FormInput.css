@@ -26,3 +26,14 @@
   color: var(--select-border);
   font-size: var(--size-text-small);
 }
+
+.input__error {
+  border: 1px solid var(--error);
+}
+
+.input__error-message {
+  font-size: 11px;
+  color: var(--error);
+  filter: drop-shadow(0 2px 4px var(--primary-dark));
+  padding-top: 5px;
+}

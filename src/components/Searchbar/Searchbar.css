@@ -22,6 +22,11 @@
   animation: hoverEffect 0.3s forwards;
 }
 
+.searchbar__button:disabled {
+  background-color: var(--select-border);
+  animation: none;
+}
+
 .searchbar__select {
   border: 1px solid var(--select-border);
   border-radius: 20px 5px 5px 20px;

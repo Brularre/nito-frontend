@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
 import api from '../utils/api';
 import { AppContext } from '../contexts/AppContext';
+import * as auth from '../utils/auth';
 
 export default function AppProvider({ handleLoading, children }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
+  const [currentUser, setCurrentUser] = useState({});
   const [isMapActive, setMapActive] = useState(false);
   const [workers, setWorkers] = useState([]);
   const [selectedWorker, setSelectedWorker] = useState(null);
@@ -16,6 +21,23 @@ export default function AppProvider({ handleLoading, children }) {
   //   // se importa en listItem y se ejecuta en el onClick
   //   // toma el location del listItem
   // }
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth
+        .getAuthorizedUserData(jwt)
+        .then((res) => {
+          if (res) {
+            const { name, email, _id } = res.data;
+            setCurrentUser({ name, email, _id });
+            setIsRegistered(true);
+            setIsLoggedIn(true);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
 
   useEffect(() => {
     api
@@ -44,11 +66,57 @@ export default function AppProvider({ handleLoading, children }) {
   }
 
   function filterWork(area) {
-    let filteredWorkers = workers.filter((worker) => worker.area === area);
-    return filteredWorkers;
+    return workers.filter((worker) => worker.area === area);
+  }
+
+  function handleRegister(userData) {
+    auth
+      .register(userData)
+      .then((user) => {
+        if (user.data._id) {
+          setIsSuccess(true);
+        } else {
+          setIsSuccess(false);
+        }
+      })
+      .catch((err) => {
+        setIsSuccess(false);
+        console.log(err);
+      })
+      .finally(() => {
+        // openPopup('infoTooltip');
+      });
+  }
+
+  function handleLogin(userValues) {
+    auth
+      .authorize(userValues)
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem('jwt', data.token);
+          setIsLoggedIn(true);
+        }
+      })
+      .catch((err) => {
+        setIsSuccess(false);
+        console.log(err);
+      });
+  }
+
+  function handleLogout() {
+    localStorage.removeItem('jwt');
+    setIsLoggedIn(false);
   }
 
   const contextValues = {
+    isLoggedIn,
+    setIsLoggedIn,
+    isSuccess,
+    setIsSuccess,
+    isRegistered,
+    setIsRegistered,
+    currentUser,
+    setCurrentUser,
     isMapActive,
     setMapActive,
     workers,
@@ -62,6 +130,9 @@ export default function AppProvider({ handleLoading, children }) {
     setMapPosition,
     isAddFormOpen,
     setAddFormOpen,
+    handleRegister,
+    handleLogin,
+    handleLogout,
   };
 
   return (

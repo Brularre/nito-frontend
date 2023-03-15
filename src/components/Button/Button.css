@@ -16,6 +16,11 @@
   animation: hoverEffect 0.3s forwards;
 }
 
+.button:disabled {
+  background-color: var(--select-border);
+  animation: none;
+}
+
 .button_primary {
   background-color: var(--primary-dark);
 }
@@ -28,6 +33,10 @@
 
 .button_accent:hover {
   animation: heroHoverEffect 0.3s forwards;
+}
+
+.button_accent:disabled {
+  animation: none;
 }
 
 .button_blue {
