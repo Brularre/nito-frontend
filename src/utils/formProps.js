@@ -69,10 +69,11 @@ const selectProps = {
       <>
         <option>Elige una</option>
         <option value="Automotriz">Automotriz</option>
-        <option value="Pintura">Pintura</option>
         <option value="Construcción">Construcción</option>
-        <option value="Plomería">Plomería</option>
         <option value="Electricidad">Electricidad</option>
+        <option value="Limpieza">Limpieza</option>
+        <option value="Pintura">Pintura</option>
+        <option value="Plomería">Plomería</option>
       </>
     ),
   },

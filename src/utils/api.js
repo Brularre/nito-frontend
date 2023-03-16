@@ -19,14 +19,23 @@ class Api {
   }
 
   async addWorker(workerData) {
+    const { name, area, email, link, telephone, city, location } = workerData;
     try {
       const res = await fetch(
-        `${this._address}/cards`,
-        reqConfig('POST', true, true, { workerData }),
+        `${this._address}/workers`,
+        reqConfig('POST', true, true, {
+          name: name,
+          area: area,
+          email: email || 'No ingresado',
+          link: link || 'No ingresado',
+          telephone: telephone || 'No ingresado',
+          city: city || 'Viña del Mar',
+          location: location,
+        }),
       );
       return res.ok ? await res.json() : Promise.reject(res.status);
     } catch (err) {
-      throw new Error(`Error ${err}.`);
+      console.log(err.response.data);
     }
   }
 }

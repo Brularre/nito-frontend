@@ -64,6 +64,7 @@ export default function Map() {
             Ciudad: {worker.city || 'Viña del Mar'} <br />
             Correo: {worker.email || 'No Ingresado'} <br />
             Teléfono: {worker.telephone || 'No Ingresado'} <br />
+            Web: {worker.link || 'No Ingresado'} <br />
           </Popup>
         </Marker>
       ))}

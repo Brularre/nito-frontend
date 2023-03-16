@@ -6,7 +6,12 @@ import { FormContext } from '../../contexts/FormContext';
 import './FormSelect.css';
 
 export default function FormInput(props) {
-  const { handleInputChange } = useContext(FormContext);
+  const { inputValues, setInputValues } = useContext(FormContext);
+
+  function handleInputChange(evt) {
+    const { name, value } = evt.target;
+    setInputValues({ ...inputValues, [name]: value });
+  }
 
   return (
     <div className="select">

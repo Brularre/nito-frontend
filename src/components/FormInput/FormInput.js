@@ -6,12 +6,13 @@ import { FormContext } from '../../contexts/FormContext';
 import './FormInput.css';
 
 export default function FormInput(props) {
-  const { inputValues, setInputValues, errors, setErrors } =
+  const { inputValues, setInputValues, errors, setErrors, checkForm } =
     useContext(FormContext);
 
   function handleInputChange(evt) {
     const { name, value } = evt.target;
     setInputValues({ ...inputValues, [name]: value });
+    checkForm();
   }
 
   function checkInputValidity(evt) {

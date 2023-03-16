@@ -4,10 +4,14 @@ import { AppContext } from '../contexts/AppContext';
 import * as auth from '../utils/auth';
 
 export default function AppProvider({ handleLoading, children }) {
+  // Estados de Usuario y Auth
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isSuccess, setIsSuccess] = useState(true);
+  const [isOverlayActive, setOverlayActive] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+
+  // Estados de App
   const [isMapActive, setMapActive] = useState(false);
   const [workers, setWorkers] = useState([]);
   const [selectedWorker, setSelectedWorker] = useState(null);
@@ -74,6 +78,8 @@ export default function AppProvider({ handleLoading, children }) {
       .register(userData)
       .then((user) => {
         if (user.data._id) {
+          setCurrentUser(user.data);
+          setIsRegistered(true);
           setIsSuccess(true);
         } else {
           setIsSuccess(false);
@@ -84,7 +90,10 @@ export default function AppProvider({ handleLoading, children }) {
         console.log(err);
       })
       .finally(() => {
-        // openPopup('infoTooltip');
+        setOverlayActive(true);
+        setTimeout(() => {
+          setOverlayActive(false);
+        }, 1250);
       });
   }
 
@@ -95,11 +104,20 @@ export default function AppProvider({ handleLoading, children }) {
         if (data.token) {
           localStorage.setItem('jwt', data.token);
           setIsLoggedIn(true);
+          setIsSuccess(true);
+        } else {
+          setIsSuccess(false);
         }
       })
       .catch((err) => {
         setIsSuccess(false);
         console.log(err);
+      })
+      .finally(() => {
+        setOverlayActive(true);
+        setTimeout(() => {
+          setOverlayActive(false);
+        }, 1250);
       });
   }
 
@@ -112,7 +130,7 @@ export default function AppProvider({ handleLoading, children }) {
     isLoggedIn,
     setIsLoggedIn,
     isSuccess,
-    setIsSuccess,
+    isOverlayActive,
     isRegistered,
     setIsRegistered,
     currentUser,

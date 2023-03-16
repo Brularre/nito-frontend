@@ -6,8 +6,8 @@ import orangeIcon from '../images/worker-orange.svg';
 import redIcon from '../images/worker-red.svg';
 import L from 'leaflet';
 
-const BASE_URL = 'https://api.brularre.nito.students.nomoredomainssbs.ru';
-// const BASE_URL = 'http://localhost:3000';
+// const BASE_URL = 'https://api.brularre.nito.students.nomoredomainssbs.ru';
+const BASE_URL = 'http://localhost:3000';
 
 const workerStyles = {
   Automotriz: {

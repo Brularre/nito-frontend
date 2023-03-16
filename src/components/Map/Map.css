@@ -54,14 +54,14 @@
 }
 
 .leaflet-container {
-  height: 75vh;
+  height: 100%;
+  width: 100%;
   border-radius: 50px 0;
-  top: -26px;
+  position: absolute;
 }
 
 @media screen and (min-width: 768px) {
   .leaflet-container {
     width: 100%;
-    top: -7px;
   }
 }

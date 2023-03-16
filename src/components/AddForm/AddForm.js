@@ -19,27 +19,19 @@ export default function AddForm() {
     useContext(AppContext);
 
   const [errors, setErrors] = useState({});
-  const [inputValues, setInputValues] = useState({
-    name: '',
-    area: '',
-    email: '',
-    link: '',
-    telephone: '',
-    city: '',
-    location: mapPosition,
-  });
+  const [inputValues, setInputValues] = useState({ location: mapPosition });
 
   function handleAddWorker(evt) {
     evt.preventDefault();
-    api.addWorker(inputValues.name, inputValues.link).then((newWorker) => {
-      setWorkers([newWorker.data, ...workers]);
+    api.addWorker(inputValues).then((newWorker) => {
+      setWorkers([newWorker, ...workers]);
     });
     setInputValues({});
     setAddFormOpen(false);
   }
 
   function isFormOk() {
-    const isInputError = Object.keys(errors).some((key) => errors[key]);
+    const isInputError = Object.values(errors).some((error) => error);
     return isInputError;
   }
 
@@ -65,8 +57,8 @@ export default function AddForm() {
             />
             <FormSelect {...selectProps.area} />
             <FormInput {...inputProps.email} isRequired={false} />
-            <FormInput {...inputProps.link} />
-            <FormInput {...inputProps.telephone} />
+            <FormInput {...inputProps.link} isRequired={false} />
+            <FormInput {...inputProps.telephone} isRequired={false} />
             <FormSelect {...selectProps.city} />
             <FormInput {...inputProps.location} value={mapPosition} />
 
