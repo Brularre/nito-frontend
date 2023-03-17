@@ -49,6 +49,42 @@
   color: var(--text-white) !important;
 }
 
+.popup-worker .leaflet-popup-content-wrapper {
+  padding: 20px;
+  color: var(--text-white);
+  background: linear-gradient(
+      to top right,
+      rgba(3, 64, 120, 0.5) 10%,
+      rgba(3, 64, 120, 0.8) 60%
+    ),
+    url(../../images/form__background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.25));
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.popup-worker .leaflet-popup-close-button {
+  color: var(--text-white) !important;
+  left: 10px;
+}
+
+.popup-worker__title {
+  font-size: var(--size-text);
+  color: var(--text-white);
+  margin: 0;
+  filter: drop-shadow(0 2px 4px var(--primary-dark));
+}
+
+.popup-worker__info {
+  font-size: var(--size-text-small);
+  text-align: left;
+  line-height: 1.5;
+  padding-bottom: 20px;
+}
+
 .leaflet-bottom {
   display: none;
 }

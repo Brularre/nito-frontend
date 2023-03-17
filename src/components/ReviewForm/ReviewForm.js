@@ -1,90 +1,84 @@
 // Imports
 import { useContext, useState } from 'react';
 import { AppContext } from '../../contexts/AppContext';
-import { inputProps } from '../../utils/formProps';
-import FormProvider from '../../providers/FormProvider';
+import { textAreaProps } from '../../utils/formProps';
+import api from '../../utils/api';
 
 // Components
-import FormInput from '../FormInput/FormInput';
+import FormProvider from '../../providers/FormProvider';
+import StarRating from '../StarRating/StarRating';
+import FormTextArea from '../FormTextArea/FormTextArea';
 import Button from '../Button/Button';
 
 // Styles
-import './Form.css';
+import './ReviewForm.css';
 
-export default function Form() {
-  const {
-    isLoggedIn,
-    isRegistered,
-    setIsRegistered,
-    handleRegister,
-    handleLogin,
-  } = useContext(AppContext);
+export default function ReviewForm({ worker }) {
+  const { isLoggedIn, currentUser, setWorkers, workers } =
+    useContext(AppContext);
 
   const [errors, setErrors] = useState({});
   const [inputValues, setInputValues] = useState({
-    name: '',
-    email: '',
-    password: '',
+    rating: '',
+    review: '',
   });
 
   function isFormOk() {
-    const isInputEmpty = Object.values(inputValues).some(
-      (value) => !value.trim(),
-    );
     const isInputError = Object.values(errors).some((error) => error);
-    return isInputEmpty || isInputError;
+    return isInputError;
   }
-
-  const toggleIsRegistered = () => setIsRegistered((value) => !value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    !isRegistered ? handleRegister(inputValues) : handleLogin(inputValues);
-    setInputValues({});
+    api
+      .addReview(worker._id, inputValues, currentUser._id)
+      .then((review) => {
+        const existingReviews = worker.reviews || [];
+        const newReviews = [...existingReviews, review];
+        const updatedWorker = { ...worker, reviews: newReviews };
+        const workerIndex = workers.findIndex(
+          (item) => item._id === worker._id,
+        );
+        const updatedWorkers = [
+          ...workers.slice(0, workerIndex),
+          updatedWorker,
+          ...workers.slice(workerIndex + 1),
+        ];
+        setWorkers(updatedWorkers);
+        setInputValues({});
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
     <>
-      {!isLoggedIn && (
+      {isLoggedIn && (
         <FormProvider
           errors={errors}
           setErrors={setErrors}
           inputValues={inputValues}
           setInputValues={setInputValues}
         >
-          <div className="form" onSubmit={handleSubmit}>
-            <form className="user-form" name="user-form" id="user-form">
-              <h2 className="form__title">
-                {!isRegistered
-                  ? 'Únete a la comunidad'
-                  : 'Ingresa a la comunidad'}
-              </h2>
-              <h3 className="form__subtitle">
-                {!isRegistered
-                  ? '¡Queremos tus datitos! Únete a nuestra comunidad y empieza a compartir.'
-                  : '¿Ya eres miembro? Ingresa y participa de nuestra comunidad'}
-              </h3>
-              {!isRegistered && (
-                <FormInput
-                  {...inputProps.name}
-                  label="Nombre* (aparece en caso que postees una reseña)"
-                />
-              )}
-              <FormInput {...inputProps.email} />
-              <FormInput {...inputProps.password} />
-              <Button
-                inactive={isFormOk()}
-                type="submit"
-                color="accent"
-                text="Unirse a la comunidad"
-              />
-              <p onClick={toggleIsRegistered} className="form__link">
-                {!isRegistered
-                  ? '¿Ya eres miembro? Ingresa y participa de nuestra comunidad'
-                  : '¡Queremos tus datitos! Únete a nuestra comunidad y empieza a compartir.'}
-              </p>
-            </form>
-          </div>
+          <form
+            className="review-form"
+            name="review-form"
+            id="review-form"
+            onSubmit={handleSubmit}
+          >
+            <h3 className="review-form__title">
+              ¿Conoces este datito? ¡Deja una referencia!
+            </h3>
+            <StarRating />
+            <FormTextArea {...textAreaProps.review} />
+            <Button
+              inactive={isFormOk()}
+              type="submit"
+              color="primary"
+              text="Enviar"
+            />
+          </form>
         </FormProvider>
       )}
     </>

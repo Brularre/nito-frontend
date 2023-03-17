@@ -9,9 +9,9 @@ import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 
 // Styles
-import './Form.css';
+import './UserForm.css';
 
-export default function Form() {
+export default function UserForm() {
   const {
     isLoggedIn,
     isRegistered,
@@ -28,11 +28,11 @@ export default function Form() {
   });
 
   function isFormOk() {
-    const isInputEmpty = Object.values(inputValues).some(
-      (value) => !value.trim(),
-    );
+    // const isInputEmpty = Object.values(inputValues).some(
+    //   (value) => value === '',
+    // );
     const isInputError = Object.values(errors).some((error) => error);
-    return isInputEmpty || isInputError;
+    return isInputError;
   }
 
   const toggleIsRegistered = () => setIsRegistered((value) => !value);
@@ -40,7 +40,8 @@ export default function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     !isRegistered ? handleRegister(inputValues) : handleLogin(inputValues);
-    setInputValues({});
+    setInputValues({ name: '', email: '', password: '' });
+    setErrors({});
   };
 
   return (

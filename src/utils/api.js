@@ -38,6 +38,35 @@ class Api {
       console.log(err.response.data);
     }
   }
+
+  async addReview(id, reviewData, creator) {
+    const { review, rating } = reviewData;
+    try {
+      const res = await fetch(
+        `${this._address}/workers/${id}/reviews`,
+        reqConfig('POST', true, true, {
+          text: review,
+          rating,
+          creator,
+        }),
+      );
+      return res.ok ? await res.json() : Promise.reject(res.status);
+    } catch (err) {
+      throw new Error(`Error ${err}.`);
+    }
+  }
+
+  async getReviewsByWorkerId(id) {
+    try {
+      const res = await fetch(
+        `${this._address}/workers/${id}/reviews`,
+        reqConfig('GET', true, false, ''),
+      );
+      return res.ok ? await res.json() : Promise.reject(res.status);
+    } catch (err) {
+      throw new Error(`Error ${err}.`);
+    }
+  }
 }
 
 const api = new Api({

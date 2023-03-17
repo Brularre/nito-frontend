@@ -5,6 +5,11 @@
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));
   width: fit-content;
+  text-decoration: none;
+}
+
+.list-item:hover {
+  animation: hoverEffect 0.3s forwards;
 }
 
 .list-item__content-box {

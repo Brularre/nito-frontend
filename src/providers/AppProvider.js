@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import api from '../utils/api';
 import { AppContext } from '../contexts/AppContext';
 import * as auth from '../utils/auth';
@@ -12,6 +12,7 @@ export default function AppProvider({ handleLoading, children }) {
   const [currentUser, setCurrentUser] = useState({});
 
   // Estados de App
+  const [map, setMap] = useState(null);
   const [isMapActive, setMapActive] = useState(false);
   const [workers, setWorkers] = useState([]);
   const [selectedWorker, setSelectedWorker] = useState(null);
@@ -19,24 +20,19 @@ export default function AppProvider({ handleLoading, children }) {
   const [mapPosition, setMapPosition] = useState([-33.0153, -71.5505]);
   const [isAddFormOpen, setAddFormOpen] = useState(false);
 
-  // function x() {
-  //   // setear el mapa activo
-  //   // setear map position
-  //   // se importa en listItem y se ejecuta en el onClick
-  //   // toma el location del listItem
-  // }
+  const markerRefs = useRef([]);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth
-        .getAuthorizedUserData(jwt)
+        .getAuthorizedUserData()
         .then((res) => {
           if (res) {
             const { name, email, _id } = res.data;
-            setCurrentUser({ name, email, _id });
             setIsRegistered(true);
             setIsLoggedIn(true);
+            setCurrentUser({ name, email, _id });
           }
         })
         .catch((err) => console.log(err));
@@ -78,7 +74,6 @@ export default function AppProvider({ handleLoading, children }) {
       .register(userData)
       .then((user) => {
         if (user.data._id) {
-          setCurrentUser(user.data);
           setIsRegistered(true);
           setIsSuccess(true);
         } else {
@@ -93,7 +88,7 @@ export default function AppProvider({ handleLoading, children }) {
         setOverlayActive(true);
         setTimeout(() => {
           setOverlayActive(false);
-        }, 1250);
+        }, 1500);
       });
   }
 
@@ -117,13 +112,21 @@ export default function AppProvider({ handleLoading, children }) {
         setOverlayActive(true);
         setTimeout(() => {
           setOverlayActive(false);
-        }, 1250);
+        }, 1500);
       });
   }
 
   function handleLogout() {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
+  }
+
+  function showWorkerLocation(worker) {
+    setMapActive(true);
+    setMapPosition(worker.location);
+    map.setView(worker.location);
+    const markerRef = markerRefs.current[worker._id];
+    markerRef.openPopup();
   }
 
   const contextValues = {
@@ -135,8 +138,11 @@ export default function AppProvider({ handleLoading, children }) {
     setIsRegistered,
     currentUser,
     setCurrentUser,
+    map,
+    setMap,
     isMapActive,
     setMapActive,
+    markerRefs,
     workers,
     setWorkers,
     selectedWorker,
@@ -151,6 +157,7 @@ export default function AppProvider({ handleLoading, children }) {
     handleRegister,
     handleLogin,
     handleLogout,
+    showWorkerLocation,
   };
 
   return (

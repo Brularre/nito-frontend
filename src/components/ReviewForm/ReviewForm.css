@@ -1,0 +1,16 @@
+.review-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.25));
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.3s;
+}
+.review-form__title {
+  color: var(--text-white);
+  margin: 0;
+  filter: drop-shadow(0 2px 4px var(--primary-dark));
+}

@@ -3,9 +3,9 @@ import { useContext } from 'react';
 import { FormContext } from '../../contexts/FormContext';
 
 // Styles
-import './FormInput.css';
+import './FormTextArea.css';
 
-export default function FormInput(props) {
+export default function FormTextArea(props) {
   const { inputValues, setInputValues, errors, setErrors } =
     useContext(FormContext);
 
@@ -28,15 +28,13 @@ export default function FormInput(props) {
   }
 
   return (
-    <div className={`input`}>
-      <label className="input__label" htmlFor={props.name}>
-        {props.label}
-      </label>
-      <input
-        type={props.type}
+    <div className={`textarea`}>
+      <textarea
         name={props.name}
         id={props.name}
-        className={`input__element ${errors[props.name] && 'input__error'}`}
+        className={`textarea__element ${
+          errors[props.name] && 'textarea__error'
+        }`}
         placeholder={props.placeholder}
         minLength={props.minLength}
         maxLength={props.maxLength}
@@ -46,7 +44,7 @@ export default function FormInput(props) {
         value={inputValues[props.name] || ''}
       />
       {errors[props.name] && (
-        <span className="input__error-message">{errors[props.name]}</span>
+        <span className="textarea__error-message">{errors[props.name]}</span>
       )}
     </div>
   );
