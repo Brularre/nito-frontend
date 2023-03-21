@@ -40,7 +40,7 @@ export default function SearchBar(props) {
           className="searchbar__select"
           required
         >
-          <option>Especialidad</option>
+          <option value="">Especialidad</option>
           <option value="all">Todos</option>
           <option value="Automotriz">Automotriz</option>
           <option value="Pintura">Pintura</option>
@@ -48,7 +48,9 @@ export default function SearchBar(props) {
           <option value="Plomería">Plomería</option>
           <option value="Electricidad">Electricidad</option>
         </select>
-        <button className="searchbar__button">Buscar 🔍</button>
+        <button disabled={select2Value === ''} className="searchbar__button">
+          Buscar 🔍
+        </button>
       </form>
       <p className="searchbar__info">{props.info}</p>
     </section>

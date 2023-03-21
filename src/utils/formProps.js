@@ -3,24 +3,21 @@ const inputProps = {
     type: 'text',
     name: 'name',
     placeholder: 'Nombre',
-    length: {
-      min: '2',
-      max: '40',
-    },
+    minLength: '2',
+    maxLength: '40',
     isRequired: true,
   },
   email: {
+    label: 'Correo electrónico',
     type: 'email',
     name: 'email',
     placeholder: 'Email',
-    length: {
-      min: '4',
-      max: '254',
-    },
+    minLength: '4',
+    maxLength: '254',
     isRequired: true,
   },
   link: {
-    label: 'Dirección Web (si existe)',
+    label: 'Dirección Web',
     type: 'url',
     name: 'link',
     placeholder: 'Enlace',
@@ -30,10 +27,8 @@ const inputProps = {
     type: 'password',
     name: 'password',
     placeholder: 'Contraseña',
-    length: {
-      min: '6',
-      max: '20',
-    },
+    minLength: '6',
+    maxLength: '20',
     isRequired: true,
   },
   telephone: {
@@ -41,10 +36,8 @@ const inputProps = {
     type: 'text',
     name: 'telephone',
     placeholder: 'Teléfono',
-    length: {
-      min: '8',
-      max: '10',
-    },
+    minLength: '8',
+    maxLength: '10',
     isRequired: false,
   },
   location: {
@@ -52,10 +45,8 @@ const inputProps = {
     type: 'text',
     name: 'location',
     placeholder: 'Ubicación',
-    length: {
-      min: '2',
-      max: '40',
-    },
+    minLength: '2',
+    maxLength: '40',
     isRequired: true,
   },
 };
@@ -68,10 +59,11 @@ const selectProps = {
       <>
         <option>Elige una</option>
         <option value="Automotriz">Automotriz</option>
-        <option value="Pintura">Pintura</option>
         <option value="Construcción">Construcción</option>
-        <option value="Plomería">Plomería</option>
         <option value="Electricidad">Electricidad</option>
+        <option value="Limpieza">Limpieza</option>
+        <option value="Pintura">Pintura</option>
+        <option value="Plomería">Plomería</option>
       </>
     ),
   },
@@ -80,10 +72,22 @@ const selectProps = {
     name: 'city',
     options: (
       <>
+        <option>Elige una</option>
         <option value="Viña del Mar">Viña del Mar</option>
       </>
     ),
   },
 };
 
-export { inputProps, selectProps };
+const textAreaProps = {
+  review: {
+    label: 'Reseña',
+    name: 'review',
+    placeholder: 'Comparte con nosotros tu experiencia',
+    minLength: 4,
+    maxLength: 200,
+    isRequired: true,
+  },
+};
+
+export { inputProps, selectProps, textAreaProps };

@@ -83,27 +83,27 @@ const filters = [
 const workerIcons = {
   Automotriz: new L.Icon({
     iconUrl: blueIcon,
-    iconSize: 45,
+    iconSize: [45, 45],
   }),
   Construcción: new L.Icon({
     iconUrl: greenIcon,
-    iconSize: 45,
+    iconSize: [45, 45],
   }),
   Electricidad: new L.Icon({
     iconUrl: violetIcon,
-    iconSize: 45,
+    iconSize: [45, 45],
   }),
   Limpieza: new L.Icon({
     iconUrl: yellowIcon,
-    iconSize: 45,
+    iconSize: [45, 45],
   }),
   Pintura: new L.Icon({
     iconUrl: orangeIcon,
-    iconSize: 45,
+    iconSize: [45, 45],
   }),
   Plomería: new L.Icon({
     iconUrl: redIcon,
-    iconSize: 45,
+    iconSize: [45, 45],
   }),
 };
 

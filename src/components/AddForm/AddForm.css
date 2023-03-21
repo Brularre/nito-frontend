@@ -21,6 +21,8 @@
   font-size: var(--size-section-title);
   color: var(--text-white);
   margin: 0;
+  line-height: 1.1;
+  padding: 15px 0;
   filter: drop-shadow(0 2px 4px var(--primary-dark));
 }
 

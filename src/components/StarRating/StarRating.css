@@ -1,0 +1,14 @@
+.star-rating__btn {
+  font-size: var(--size-text);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.25));
+}
+.on {
+  color: var(--primary-accent);
+}
+.off {
+  color: var(--text-white);
+}

@@ -1,18 +1,17 @@
 .hero {
-  min-height: 75vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 998;
+  z-index: 401;
   background: linear-gradient(
     to top right,
     rgba(38, 208, 206, 0.5) 10%,
     rgba(26, 41, 128, 0.8) 60%
   );
-  width: 95%;
+  width: 100%;
   border-radius: 50px 0;
   position: absolute;
-  top: 23px;
 }
 
 .hero_hidden {
@@ -55,9 +54,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .hero {
-    top: 33px;
-  }
 }
 
 @media screen and (min-width: 1024px) {

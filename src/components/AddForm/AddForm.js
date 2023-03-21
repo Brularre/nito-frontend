@@ -1,7 +1,10 @@
 // Imports
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from '../../contexts/AppContext';
 import { inputProps, selectProps } from '../../utils/formProps';
+import FormProvider from '../../providers/FormProvider';
+import api from '../../utils/api';
+import { HashLink as Link } from 'react-router-hash-link';
 
 // Components
 import FormInput from '../FormInput/FormInput';
@@ -12,82 +15,71 @@ import Button from '../Button/Button';
 import './AddForm.css';
 
 export default function AddForm() {
-  const [inputValues, setInputValues] = useState({});
-  const { workers, setWorkers, mapPosition, setAddFormOpen } =
+  const { isLoggedIn, workers, setWorkers, mapPosition, setAddFormOpen } =
     useContext(AppContext);
 
-  function handleInputChange(evt) {
-    const { name, value } = evt.target;
-    setInputValues({ ...inputValues, [name]: value });
-  }
+  const [errors, setErrors] = useState({});
+  const [inputValues, setInputValues] = useState({ location: mapPosition });
 
   function handleAddWorker(evt) {
     evt.preventDefault();
-    // api.addCard(inputValues.name, inputValues.link).then((newCard) => {
-    //   setCards([newCard.data, ...cards]);
-    // });
-    setWorkers([inputValues, ...workers]);
+    api.addWorker(inputValues).then((newWorker) => {
+      setWorkers([newWorker, ...workers]);
+    });
     setInputValues({});
     setAddFormOpen(false);
   }
 
-  useEffect(() => {
-    setInputValues({
-      ...inputValues,
-      location: mapPosition,
-      _id: Math.floor(Math.random() * 99999),
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mapPosition]);
+  function isFormOk() {
+    const isInputError = Object.values(errors).some((error) => error);
+    return isInputError;
+  }
 
   return (
-    <form
-      className="add-form"
-      name="add-form"
-      id="add-form"
-      onSubmit={handleAddWorker}
-    >
-      <h2 className="form__title">Agrega un datito</h2>
-      <FormInput
-        {...inputProps.name}
-        onChange={handleInputChange}
-        value={inputValues.name}
-        label="Nombre de Especialista o Empresa*"
-      />
-      <FormSelect
-        {...selectProps.area}
-        onChange={handleInputChange}
-        value={inputValues.area}
-      />
-      <FormInput
-        {...inputProps.email}
-        onChange={handleInputChange}
-        value={inputValues.email}
-        label="Correo de contacto"
-        isRequired={false}
-      />
-      <FormInput
-        {...inputProps.link}
-        onChange={handleInputChange}
-        value={inputValues.link}
-      />
-      <FormInput
-        {...inputProps.telephone}
-        onChange={handleInputChange}
-        value={inputValues.telephone}
-      />
-      <FormSelect
-        {...selectProps.city}
-        onChange={handleInputChange}
-        value={inputValues.city}
-      />
-      <FormInput
-        {...inputProps.location}
-        onChange={handleInputChange}
-        value={mapPosition}
-      />
+    <>
+      {isLoggedIn ? (
+        <FormProvider
+          errors={errors}
+          setErrors={setErrors}
+          inputValues={inputValues}
+          setInputValues={setInputValues}
+        >
+          <form
+            className="add-form"
+            name="add-form"
+            id="add-form"
+            onSubmit={handleAddWorker}
+          >
+            <h2 className="form__title">Agrega un datito</h2>
+            <FormInput
+              {...inputProps.name}
+              label="Nombre de Especialista o Empresa*"
+            />
+            <FormSelect {...selectProps.area} />
+            <FormInput {...inputProps.email} isRequired={false} />
+            <FormInput {...inputProps.link} isRequired={false} />
+            <FormInput {...inputProps.telephone} isRequired={false} />
+            <FormSelect {...selectProps.city} />
+            <FormInput {...inputProps.location} value={mapPosition} />
 
-      <Button type="submit" color="accent" text="Agregar a la comunidad" />
-    </form>
+            <Button
+              inactive={isFormOk()}
+              type="submit"
+              color="accent"
+              text="Agregar a la comunidad"
+            />
+          </form>
+        </FormProvider>
+      ) : (
+        <>
+          <h2 className="form__title">
+            Únete a la comunidad o ingresa para poder agregar datitos
+          </h2>
+          <Link className="footer__link" to="/#user-form">
+            <Button color="accent" text="Ir al formulario" />
+          </Link>
+        </>
+      )}
+    </>
   );
 }

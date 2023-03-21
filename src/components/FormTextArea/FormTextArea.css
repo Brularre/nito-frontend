@@ -1,10 +1,10 @@
-.input {
-  width: 48%;
+.textarea {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.input__label {
+.textarea__label {
   font-size: 12px;
   color: var(--text-white);
   margin: 0;
@@ -12,7 +12,7 @@
   padding-bottom: 5px;
 }
 
-.input__element {
+.textarea__element {
   border: 1px solid var(--select-border);
   border-radius: 10px;
   padding: 8px 8px;
@@ -22,16 +22,16 @@
   filter: drop-shadow(0 2px 4px var(--primary-dark));
 }
 
-.input::placeholder {
+.textarea::placeholder {
   color: var(--select-border);
   font-size: var(--size-text-small);
 }
 
-.input__error {
+.textarea__error {
   border: 1px solid var(--error);
 }
 
-.input__error-message {
+.textarea__error-message {
   font-size: 11px;
   color: var(--error);
   filter: drop-shadow(0 2px 4px var(--primary-dark));

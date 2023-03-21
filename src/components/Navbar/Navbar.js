@@ -7,24 +7,39 @@ import './Navbar.css';
 
 export default function NavBar() {
   const [isActive, setIsActive] = useState(false);
-  const { isMapActive, setMapActive } = useContext(AppContext);
+  const { isMapActive, setMapActive, isLoggedIn, currentUser, handleLogout } =
+    useContext(AppContext);
 
   return (
     <>
       {!isMapActive && (
         <>
           <nav className="navbar">
-            <div className={`navbar__item-container ${isActive && 'active'}`}>
-              <Link className="navbar__item" to="/#home">
-                Inicio
-              </Link>
-              <Link className="navbar__item" to="/#suggested">
-                Sugeridos
-              </Link>
-              <Link className="navbar__item" to="/#about">
-                Sobre mi
-              </Link>
-            </div>
+            <ul className={`navbar__item-container ${isActive && 'active'}`}>
+              {isLoggedIn && (
+                <li className="navbar__item">{`Hola, ${currentUser.name}`}</li>
+              )}
+              <li>
+                <Link className="navbar__item" to="/#home">
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <Link className="navbar__item" to="/#suggested">
+                  Sugeridos
+                </Link>
+              </li>
+              <li>
+                <Link className="navbar__item" to="/#about">
+                  Sobre mi
+                </Link>
+              </li>
+              {isLoggedIn && (
+                <li className="navbar__item" onClick={handleLogout}>
+                  Cerrar Sesión
+                </li>
+              )}
+            </ul>
           </nav>
           <div
             onClick={() => {
