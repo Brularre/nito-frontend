@@ -35,7 +35,7 @@ class Api {
       );
       return res.ok ? await res.json() : Promise.reject(res.status);
     } catch (err) {
-      console.log(err.response.data);
+      throw new Error(`Error ${err}.`);
     }
   }
 

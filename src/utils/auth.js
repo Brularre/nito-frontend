@@ -1,34 +1,29 @@
 import { BASE_URL } from './constants';
 import { reqConfig } from './utils';
 
-export const register = ({ name, email, password }) => {
-  return fetch(
+export const register = async ({ name, email, password }) => {
+  const res = await fetch(
     `${BASE_URL}/signup`,
     reqConfig('POST', false, true, { name, email, password }),
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((err) => console.log(err));
+  );
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || `Error ${res.status}`);
+  return data;
 };
 
-export const authorize = ({ email, password }) => {
-  return fetch(
+export const authorize = async ({ email, password }) => {
+  const res = await fetch(
     `${BASE_URL}/signin`,
     reqConfig('POST', false, true, { email, password }),
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      localStorage.setItem('jwt', data);
-      return data;
-    })
-    .catch((err) => console.log(err));
+  );
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || `Error ${res.status}`);
+  return data;
 };
 
-export const getAuthorizedUserData = () => {
-  return fetch(`${BASE_URL}/users/me`, reqConfig('GET', true, false, {}))
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
+export const getAuthorizedUserData = async () => {
+  const res = await fetch(`${BASE_URL}/users/me`, reqConfig('GET', true, false, {}));
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || `Error ${res.status}`);
+  return data;
 };
