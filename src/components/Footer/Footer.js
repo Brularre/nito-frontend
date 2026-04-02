@@ -1,6 +1,4 @@
 // Imports
-import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import logo from '../../images/Logo-Gradient.png';
 
@@ -17,27 +15,27 @@ export default function Footer() {
           Todos los datos inscritos son para uso público
         </p>
         <nav className="footer__social-links">
-          <NavLink
-            to="https://www.facebook.com/"
+          <a
+            href="https://www.facebook.com/"
             target="_blank"
             rel="noreferrer"
           >
             <button className="footer__social-icon footer__social-icon_facebook" />
-          </NavLink>
-          <NavLink
-            to="https://www.twitter.com/"
+          </a>
+          <a
+            href="https://www.twitter.com/"
             target="_blank"
             rel="noreferrer"
           >
             <button className="footer__social-icon footer__social-icon_twitter" />
-          </NavLink>
-          <NavLink
-            to="https://www.instagram.com/"
+          </a>
+          <a
+            href="https://www.instagram.com/"
             target="_blank"
             rel="noreferrer"
           >
             <button className="footer__social-icon footer__social-icon_instagram" />
-          </NavLink>
+          </a>
         </nav>
       </div>
       <div className="footer__column">
