@@ -59,12 +59,11 @@ export default function WorkersProvider({ handleLoading, children }) {
     api
       .getWorkers()
       .then((workerList) => {
-        dispatch({ type: 'SET_WORKERS', payload: workerList.data });
+        dispatch({ type: 'SET_WORKERS', payload: workerList.workers });
         handleLoading(false);
       })
       .catch(() => {
         handleLoading(false);
-        showOverlay(false);
       });
   }, [handleLoading, showOverlay]);
 

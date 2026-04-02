@@ -44,7 +44,6 @@ export default function AppProvider({ handleLoading, children }) {
           }
         })
         .catch(() => {
-          // Token expired or invalid — clear it so the user can log in again
           localStorage.removeItem('jwt');
         });
     }
@@ -54,7 +53,7 @@ export default function AppProvider({ handleLoading, children }) {
     api
       .getWorkers()
       .then((workerList) => {
-        setWorkers(workerList.data);
+        setWorkers(workerList.workers);
         handleLoading(false);
       })
       .catch(() => {
