@@ -1,3 +1,5 @@
+import { WORKER_CATEGORIES } from './constants';
+
 const inputProps = {
   name: {
     type: 'text',
@@ -50,8 +52,6 @@ const inputProps = {
     isRequired: true,
   },
 };
-
-import { WORKER_CATEGORIES } from './constants';
 
 const selectProps = {
   area: {

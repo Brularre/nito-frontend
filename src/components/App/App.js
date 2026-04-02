@@ -15,7 +15,6 @@ import Hero from '../Hero/Hero';
 import Map from '../Map/Map';
 import Suggested from '../Suggested/Suggested';
 import UserForm from '../UserForm/UserForm';
-import About from '../About/About';
 import Footer from '../Footer/Footer';
 
 // Styles
@@ -41,7 +40,6 @@ export default function App() {
                 <main>
                   <Suggested />
                   <UserForm />
-                  <About />
                 </main>
                 <Footer />
                 <InfoOverlay />
