@@ -24,8 +24,8 @@ export default function AddForm() {
 
   function handleAddWorker(evt) {
     evt.preventDefault();
-    api.addWorker(inputValues).then((newWorker) => {
-      addWorkerToList(newWorker);
+    api.addWorker(inputValues).then((body) => {
+      if (body.worker) addWorkerToList(body.worker);
     });
     setInputValues({});
     setAddFormOpen(false);
