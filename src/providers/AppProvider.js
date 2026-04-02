@@ -36,8 +36,8 @@ export default function AppProvider({ handleLoading, children }) {
       auth
         .getAuthorizedUserData()
         .then((res) => {
-          if (res) {
-            const { name, email, _id } = res.data;
+          if (res?.user) {
+            const { name, email, _id } = res.user;
             setIsRegistered(true);
             setIsLoggedIn(true);
             setCurrentUser({ name, email, _id });
@@ -82,8 +82,8 @@ export default function AppProvider({ handleLoading, children }) {
   function handleRegister(userData) {
     auth
       .register(userData)
-      .then((user) => {
-        if (user.data._id) {
+      .then((body) => {
+        if (body.user?._id) {
           setIsRegistered(true);
           showOverlay(true);
         } else {

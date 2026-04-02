@@ -39,13 +39,12 @@ export default function AuthProvider({ children }) {
       auth
         .getAuthorizedUserData()
         .then((res) => {
-          if (res?.data) {
-            const { name, email, _id } = res.data;
+          if (res?.user) {
+            const { name, email, _id } = res.user;
             dispatch({ type: 'SET_CURRENT_USER', payload: { name, email, _id } });
           }
         })
         .catch(() => {
-          // Token expired or invalid — clear it so the user can log in again
           localStorage.removeItem('jwt');
         });
     }
@@ -55,8 +54,8 @@ export default function AuthProvider({ children }) {
     (userData) => {
       auth
         .register(userData)
-        .then((user) => {
-          if (user.data._id) {
+        .then((body) => {
+          if (body.user?._id) {
             dispatch({ type: 'SET_REGISTERED', payload: true });
             showOverlay(true);
           } else {
