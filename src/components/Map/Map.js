@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { WorkersContext } from '../../contexts/WorkersContext';
 import {
   MapContainer,
   TileLayer,
@@ -23,7 +23,7 @@ export default function Map() {
     isAddFormOpen,
     setAddFormOpen,
     markerRefs,
-  } = useContext(AppContext);
+  } = useContext(WorkersContext);
 
   const getWorkerIcon = (area) => {
     return workerIcons[area];

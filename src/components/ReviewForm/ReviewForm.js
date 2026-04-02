@@ -1,6 +1,7 @@
 // Imports
 import { useContext, useState } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { AuthContext } from '../../contexts/AuthContext';
+import { WorkersContext } from '../../contexts/WorkersContext';
 import { textAreaProps } from '../../utils/formProps';
 import api from '../../utils/api';
 
@@ -14,8 +15,8 @@ import Button from '../Button/Button';
 import './ReviewForm.css';
 
 export default function ReviewForm({ worker }) {
-  const { isLoggedIn, currentUser, setWorkers, workers } =
-    useContext(AppContext);
+  const { isLoggedIn, currentUser } = useContext(AuthContext);
+  const { addReviewToWorker } = useContext(WorkersContext);
 
   const [errors, setErrors] = useState({});
   const [inputValues, setInputValues] = useState({
@@ -33,23 +34,10 @@ export default function ReviewForm({ worker }) {
     api
       .addReview(worker._id, inputValues, currentUser._id)
       .then((review) => {
-        const existingReviews = worker.reviews || [];
-        const newReviews = [...existingReviews, review];
-        const updatedWorker = { ...worker, reviews: newReviews };
-        const workerIndex = workers.findIndex(
-          (item) => item._id === worker._id,
-        );
-        const updatedWorkers = [
-          ...workers.slice(0, workerIndex),
-          updatedWorker,
-          ...workers.slice(workerIndex + 1),
-        ];
-        setWorkers(updatedWorkers);
+        addReviewToWorker(worker._id, review);
         setInputValues({});
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error);
   };
 
   return (

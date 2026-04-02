@@ -1,13 +1,11 @@
 import { useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { NotificationContext } from '../../contexts/NotificationContext';
 
 // Styles
 import './InfoOverlay.css';
-// import overlaySuccess from '../images/info-overlay__success.svg';
-// import overlayFail from '../images/info-overlay__fail.svg';
 
 export default function InfoOverlay() {
-  const { isSuccess, isOverlayActive } = useContext(AppContext);
+  const { isSuccess, isOverlayActive } = useContext(NotificationContext);
 
   return (
     <div

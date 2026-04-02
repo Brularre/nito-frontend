@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { WorkersContext } from '../../contexts/WorkersContext';
 import { workerStyles } from '../../utils/constants';
 
 // Styles
 import './ListItem.css';
 
 export default function Card({ listData }) {
-  const { showWorkerLocation } = useContext(AppContext);
+  const { showWorkerLocation } = useContext(WorkersContext);
 
   return (
     <div

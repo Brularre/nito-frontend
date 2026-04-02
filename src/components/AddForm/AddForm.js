@@ -1,6 +1,7 @@
 // Imports
 import { useContext, useState } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { AuthContext } from '../../contexts/AuthContext';
+import { WorkersContext } from '../../contexts/WorkersContext';
 import { inputProps, selectProps } from '../../utils/formProps';
 import FormProvider from '../../providers/FormProvider';
 import api from '../../utils/api';
@@ -15,8 +16,8 @@ import Button from '../Button/Button';
 import './AddForm.css';
 
 export default function AddForm() {
-  const { isLoggedIn, workers, setWorkers, mapPosition, setAddFormOpen } =
-    useContext(AppContext);
+  const { isLoggedIn } = useContext(AuthContext);
+  const { mapPosition, setAddFormOpen, addWorkerToList } = useContext(WorkersContext);
 
   const [errors, setErrors] = useState({});
   const [inputValues, setInputValues] = useState({ location: mapPosition });
@@ -24,7 +25,7 @@ export default function AddForm() {
   function handleAddWorker(evt) {
     evt.preventDefault();
     api.addWorker(inputValues).then((newWorker) => {
-      setWorkers([newWorker, ...workers]);
+      addWorkerToList(newWorker);
     });
     setInputValues({});
     setAddFormOpen(false);

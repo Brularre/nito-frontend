@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { AuthContext } from '../../contexts/AuthContext';
+import { WorkersContext } from '../../contexts/WorkersContext';
 import { HashLink as Link } from 'react-router-hash-link';
 import Button from '../Button/Button';
 
@@ -7,8 +8,8 @@ import './Navbar.css';
 
 export default function NavBar() {
   const [isActive, setIsActive] = useState(false);
-  const { isMapActive, setMapActive, isLoggedIn, currentUser, handleLogout } =
-    useContext(AppContext);
+  const { isLoggedIn, currentUser, handleLogout } = useContext(AuthContext);
+  const { isMapActive, setMapActive } = useContext(WorkersContext);
 
   return (
     <>

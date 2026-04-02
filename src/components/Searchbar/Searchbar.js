@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { WorkersContext } from '../../contexts/WorkersContext';
 
 import './Searchbar.css';
 
 export default function SearchBar(props) {
-  const { handleWorkersFilter } = useContext(AppContext);
+  const { handleWorkersFilter } = useContext(WorkersContext);
 
   const [select1Value, setSelect1Value] = useState('');
   const [select2Value, setSelect2Value] = useState('');

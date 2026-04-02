@@ -3,10 +3,10 @@ import Button from '../Button/Button';
 import ListItem from '../ListItem/ListItem';
 import { filters } from '../../utils/constants';
 import { useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { WorkersContext } from '../../contexts/WorkersContext';
 
 export default function Suggested() {
-  const { filteredWorkers, handleWorkersFilter } = useContext(AppContext);
+  const { filteredWorkers, handleWorkersFilter } = useContext(WorkersContext);
 
   return (
     <div id="suggested" className="suggested">

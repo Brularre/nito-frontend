@@ -1,6 +1,6 @@
 // Imports
 import { useContext, useState } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { inputProps } from '../../utils/formProps';
 import FormProvider from '../../providers/FormProvider';
 
@@ -18,7 +18,7 @@ export default function UserForm() {
     setIsRegistered,
     handleRegister,
     handleLogin,
-  } = useContext(AppContext);
+  } = useContext(AuthContext);
 
   const [errors, setErrors] = useState({});
   const [inputValues, setInputValues] = useState({
@@ -53,8 +53,8 @@ export default function UserForm() {
           inputValues={inputValues}
           setInputValues={setInputValues}
         >
-          <div className="form" onSubmit={handleSubmit}>
-            <form className="user-form" name="user-form" id="user-form">
+          <div className="form">
+            <form className="user-form" name="user-form" id="user-form" onSubmit={handleSubmit}>
               <h2 className="form__title">
                 {!isRegistered
                   ? 'Únete a la comunidad'

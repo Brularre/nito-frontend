@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { WorkersContext } from '../../contexts/WorkersContext';
 import './Hero.css';
 import SearchBar from '../Searchbar/Searchbar';
 
 export default function Hero() {
-  const { isMapActive } = useContext(AppContext);
+  const { isMapActive } = useContext(WorkersContext);
   return (
     <div className={`hero ${isMapActive ? 'hero_hidden' : ''}`}>
       <div className="hero__content">
