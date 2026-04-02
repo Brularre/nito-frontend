@@ -3,6 +3,8 @@ import api from '../utils/api';
 import { AppContext } from '../contexts/AppContext';
 import * as auth from '../utils/auth';
 
+const OVERLAY_DURATION = 1500;
+
 export default function AppProvider({ handleLoading, children }) {
   // Estados de Usuario y Auth
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,6 +24,12 @@ export default function AppProvider({ handleLoading, children }) {
 
   const markerRefs = useRef([]);
 
+  function showOverlay(success) {
+    setIsSuccess(success);
+    setOverlayActive(true);
+    setTimeout(() => setOverlayActive(false), OVERLAY_DURATION);
+  }
+
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -35,7 +43,10 @@ export default function AppProvider({ handleLoading, children }) {
             setCurrentUser({ name, email, _id });
           }
         })
-        .catch((err) => console.log(err));
+        .catch(() => {
+          // Token expired or invalid — clear it so the user can log in again
+          localStorage.removeItem('jwt');
+        });
     }
   }, []);
 
@@ -46,11 +57,11 @@ export default function AppProvider({ handleLoading, children }) {
         setWorkers(workerList.data);
         handleLoading(false);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        handleLoading(false);
+        showOverlay(false);
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [handleLoading]);
 
   useEffect(() => {
     setFilteredWorkers(workers);
@@ -75,21 +86,12 @@ export default function AppProvider({ handleLoading, children }) {
       .then((user) => {
         if (user.data._id) {
           setIsRegistered(true);
-          setIsSuccess(true);
+          showOverlay(true);
         } else {
-          setIsSuccess(false);
+          showOverlay(false);
         }
       })
-      .catch((err) => {
-        setIsSuccess(false);
-        console.log(err);
-      })
-      .finally(() => {
-        setOverlayActive(true);
-        setTimeout(() => {
-          setOverlayActive(false);
-        }, 1500);
-      });
+      .catch(() => showOverlay(false));
   }
 
   function handleLogin(userValues) {
@@ -99,21 +101,12 @@ export default function AppProvider({ handleLoading, children }) {
         if (data.token) {
           localStorage.setItem('jwt', data.token);
           setIsLoggedIn(true);
-          setIsSuccess(true);
+          showOverlay(true);
         } else {
-          setIsSuccess(false);
+          showOverlay(false);
         }
       })
-      .catch((err) => {
-        setIsSuccess(false);
-        console.log(err);
-      })
-      .finally(() => {
-        setOverlayActive(true);
-        setTimeout(() => {
-          setOverlayActive(false);
-        }, 1500);
-      });
+      .catch(() => showOverlay(false));
   }
 
   function handleLogout() {
@@ -124,9 +117,9 @@ export default function AppProvider({ handleLoading, children }) {
   function showWorkerLocation(worker) {
     setMapActive(true);
     setMapPosition(worker.location);
-    map.setView(worker.location);
+    if (map) map.setView(worker.location);
     const markerRef = markerRefs.current[worker._id];
-    markerRef.openPopup();
+    if (markerRef) markerRef.openPopup();
   }
 
   const contextValues = {
