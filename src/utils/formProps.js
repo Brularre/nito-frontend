@@ -51,6 +51,8 @@ const inputProps = {
   },
 };
 
+import { WORKER_CATEGORIES } from './constants';
+
 const selectProps = {
   area: {
     label: 'Area de especialidad*',
@@ -58,12 +60,9 @@ const selectProps = {
     options: (
       <>
         <option>Elige una</option>
-        <option value="Automotriz">Automotriz</option>
-        <option value="Construcción">Construcción</option>
-        <option value="Electricidad">Electricidad</option>
-        <option value="Limpieza">Limpieza</option>
-        <option value="Pintura">Pintura</option>
-        <option value="Plomería">Plomería</option>
+        {WORKER_CATEGORIES.map(({ value }) => (
+          <option key={value} value={value}>{value}</option>
+        ))}
       </>
     ),
   },

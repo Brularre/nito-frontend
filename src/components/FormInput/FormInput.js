@@ -16,14 +16,10 @@ export default function FormInput(props) {
 
   function checkInputValidity(evt) {
     const { name, validity, validationMessage } = evt.target;
-    let errorMessage = '';
-    if (validity.valid && !errorMessage) {
+    if (validity.valid) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
     } else {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [name]: errorMessage || validationMessage,
-      }));
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: validationMessage }));
     }
   }
 

@@ -2,7 +2,6 @@
 import './Review.css';
 
 export default function Review({ review }) {
-  console.log(review);
   const MaxRating = 5;
   const filledStars = Math.min(Math.round(review.rating), MaxRating);
   const starString = '★'.repeat(review.rating);

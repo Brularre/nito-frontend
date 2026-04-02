@@ -6,105 +6,35 @@ import orangeIcon from '../images/worker-orange.svg';
 import redIcon from '../images/worker-red.svg';
 import L from 'leaflet';
 
-const BASE_URL = 'https://api.brularre.nito.students.nomoredomainssbs.ru';
-// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = process.env.REACT_APP_API_URL;
 
-const workerStyles = {
-  Automotriz: {
-    backgroundColor: getComputedStyle(
-      document.documentElement,
-    ).getPropertyValue('--worker-blue'),
-  },
-  Construcción: {
-    backgroundColor: getComputedStyle(
-      document.documentElement,
-    ).getPropertyValue('--worker-green'),
-  },
-  Electricidad: {
-    backgroundColor: getComputedStyle(
-      document.documentElement,
-    ).getPropertyValue('--worker-violet'),
-  },
-  Limpieza: {
-    backgroundColor: getComputedStyle(
-      document.documentElement,
-    ).getPropertyValue('--worker-yellow'),
-  },
-  Pintura: {
-    backgroundColor: getComputedStyle(
-      document.documentElement,
-    ).getPropertyValue('--worker-orange'),
-  },
-  Plomería: {
-    backgroundColor: getComputedStyle(
-      document.documentElement,
-    ).getPropertyValue('--worker-red'),
-  },
-};
-
-const filters = [
-  {
-    color: 'primary',
-    value: 'all',
-    text: 'Todos🤝',
-  },
-  {
-    color: 'blue',
-    value: 'Automotriz',
-    text: 'Automotriz🚗',
-  },
-  {
-    color: 'green',
-    value: 'Construcción',
-    text: 'Construcción🚧',
-  },
-  {
-    color: 'violet',
-    value: 'Electricidad',
-    text: 'Electricidad🔌',
-  },
-  {
-    color: 'yellow',
-    value: 'Limpieza',
-    text: 'Limpieza🧹',
-  },
-  {
-    color: 'orange',
-    value: 'Pintura',
-    text: 'Pintura🖌️',
-  },
-  {
-    color: 'red',
-    value: 'Plomería',
-    text: 'Plomería🔧',
-  },
+const WORKER_CATEGORIES = [
+  { value: 'Automotriz',  color: 'blue',   hex: '#3f84e5', icon: blueIcon,   emoji: '🚗' },
+  { value: 'Construcción', color: 'green',  hex: '#4b7f52', icon: greenIcon,  emoji: '🚧' },
+  { value: 'Electricidad', color: 'violet', hex: '#60435f', icon: violetIcon, emoji: '🔌' },
+  { value: 'Limpieza',    color: 'yellow', hex: '#cc8500', icon: yellowIcon, emoji: '🧹' },
+  { value: 'Pintura',     color: 'orange', hex: '#d0653e', icon: orangeIcon, emoji: '🖌️' },
+  { value: 'Plomería',    color: 'red',    hex: '#ab2a32', icon: redIcon,    emoji: '🔧' },
 ];
 
-const workerIcons = {
-  Automotriz: new L.Icon({
-    iconUrl: blueIcon,
-    iconSize: [45, 45],
-  }),
-  Construcción: new L.Icon({
-    iconUrl: greenIcon,
-    iconSize: [45, 45],
-  }),
-  Electricidad: new L.Icon({
-    iconUrl: violetIcon,
-    iconSize: [45, 45],
-  }),
-  Limpieza: new L.Icon({
-    iconUrl: yellowIcon,
-    iconSize: [45, 45],
-  }),
-  Pintura: new L.Icon({
-    iconUrl: orangeIcon,
-    iconSize: [45, 45],
-  }),
-  Plomería: new L.Icon({
-    iconUrl: redIcon,
-    iconSize: [45, 45],
-  }),
-};
+const workerStyles = Object.fromEntries(
+  WORKER_CATEGORIES.map(({ value, hex }) => [value, { backgroundColor: hex }])
+);
 
-export { BASE_URL, workerStyles, filters, workerIcons };
+const filters = [
+  { color: 'primary', value: 'all', text: 'Todos🤝' },
+  ...WORKER_CATEGORIES.map(({ value, color, emoji }) => ({
+    color,
+    value,
+    text: `${value}${emoji}`,
+  })),
+];
+
+const workerIcons = Object.fromEntries(
+  WORKER_CATEGORIES.map(({ value, icon }) => [
+    value,
+    new L.Icon({ iconUrl: icon, iconSize: [45, 45] }),
+  ])
+);
+
+export { BASE_URL, WORKER_CATEGORIES, workerStyles, filters, workerIcons };
