@@ -28,9 +28,6 @@ export default function UserForm() {
   });
 
   function isFormOk() {
-    // const isInputEmpty = Object.values(inputValues).some(
-    //   (value) => value === '',
-    // );
     const isInputError = Object.values(errors).some((error) => error);
     return isInputError;
   }
